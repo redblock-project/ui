@@ -157,7 +157,7 @@
         height: 6px;
 	}
     .mb-switcher {
-        position: absolute;
+        position: fixed;
         width: 25vw;
         height: 25vw;
         top: 0;
