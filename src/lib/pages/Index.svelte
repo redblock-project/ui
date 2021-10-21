@@ -151,6 +151,7 @@
         letter-spacing: initial;
         margin-top: 2.0833333333vw;
         display: inline-block;
+        width: 100%;
     }
     .second-title {
         font-family: "Izvestija";
@@ -289,6 +290,7 @@
             font-size: 11.25vw;
             line-height: 11.25vw;
             margin-top: 4.6875vw;
+            text-align: center;
         }
         .second-title {
             right: auto;
