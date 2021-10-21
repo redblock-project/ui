@@ -164,6 +164,8 @@
             mix-blend-mode: difference;
             opacity: 0.4;
             white-space: nowrap;
+            width: 100vw;
+            overflow-x: hidden;
         }
         .default-text {
             padding-left: 0;
