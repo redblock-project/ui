@@ -219,7 +219,7 @@
             right: 0;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: 100%;
         }
         .header .wrapper {
             width: 100%;
