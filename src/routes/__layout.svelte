@@ -60,11 +60,10 @@
 .transparent-bg {
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
+  width: 100vw;
+  height: 100%;
   background: radial-gradient(50% 158.02% at 0% 0%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-  background-attachment: fixed;
   background-size: 100% 100%;
   z-index: 10;
 }
