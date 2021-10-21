@@ -145,7 +145,7 @@
         background: none;
         font-family: "Painting With Chocolate";
         font-weight: normal;
-        font-size: 10vw;
+        font-size: 9vw;
         line-height: 10vw;
         color: #d81828;
         letter-spacing: initial;
