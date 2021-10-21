@@ -58,7 +58,7 @@
         <h1 class="main-title" class:title_en={"en" === $AppStore.lang}>
             <span>{messages[$AppStore.lang].index_h1_1}</span>
             {messages[$AppStore.lang].index_h1_2}
-            <mark>coming soon</mark>
+            <mark>soon &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mark>
         </h1>
     </div>
     <div class="content">
