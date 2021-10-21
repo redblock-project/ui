@@ -88,13 +88,13 @@
                     navigate("/hall");
                 }}>{messages[$AppStore.lang].nav_hall}</a
             >
-            <a
+            <!-- <a
                 href={getHref("faq", $AppStore.lang)}
                 class:current={"/faq" === navPath}
                 on:click={() => {
                     navigate("/faq");
                 }}>{messages[$AppStore.lang].nav_faq}</a
-            >
+            > -->
         </div>
         <div class="header__lang">
             <a
@@ -105,14 +105,14 @@
                     $AppStore.mobileMenuShowed = false;
                 }}>EN</a
             >
-            <a
+            <!-- <a
                 href={getHref(navPath, "ru")}
                 class:active={"ru" === $AppStore.lang}
                 on:click={() => {
                     $AppStore.lang = "ru";
                     $AppStore.mobileMenuShowed = false;
                 }}>RU</a
-            >
+            > -->
         </div>
     </div>
 </header>

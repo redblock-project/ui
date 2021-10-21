@@ -24,7 +24,7 @@
             <div class="mint-content__columns">
                 <div class="mint-content__column">
                     <span class="mint-content__title">ETHEREUM</span>
-                    <span class="mint-content__sub-title">0.05 ETH {messages[$AppStore.lang].mint_unit}</span
+                    <span class="mint-content__sub-title">0.0711 ETH {messages[$AppStore.lang].mint_unit}</span
                     >
                 </div>
                 <div class="mint-content__column">
@@ -32,15 +32,15 @@
                     <div class:mint-content__group={'en' === $AppStore.lang} class:mint-content__group_ru={'ru' === $AppStore.lang}>
                         <div class="mint-content__item">
                             <span class="mint-content__sub-title">NCT</span>
-                            <span class="mint-content__value">90/100</span>
+                            <span class="mint-content__value">100/100</span>
                         </div>
                         <div class="mint-content__item">
                             <span class="mint-content__sub-title">DUST</span>
-                            <span class="mint-content__value">90/100</span>
+                            <span class="mint-content__value">100/100</span>
                         </div>
                         <div class="mint-content__item">
                             <span class="mint-content__sub-title">WHALE</span>
-                            <span class="mint-content__value">90/100</span>
+                            <span class="mint-content__value">100/100</span>
                         </div>
                     </div>
                 </div>

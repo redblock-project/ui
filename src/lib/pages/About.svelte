@@ -65,8 +65,6 @@
 <h2 class="second-title second-title--multi d-dt">
     Развивается Красное знамя В наших красных сердцах!
 </h2>
-<div class="decor-bg" />
-<div class="transparent-bg" />
 {#if ready}
     <img src="/img/girl.png" alt="" class="girl-person" class:toEnd={mobile} in:scale|local={{ duration: 300 }} />
 {/if}

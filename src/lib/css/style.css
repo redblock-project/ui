@@ -28,13 +28,12 @@ body {
     overflow-y: scroll;
 }
 @media screen and (max-width: 1920px) {
-    html, body {
+    /* html, body {
         overflow-x: hidden;
-        /* Safari compatibility */
         height: 100%;
         width: 100%;
         transform: translate3d(0,0,0);
-    }
+    } */
     body {
         background-image: url('/img/paper_s.jpg');
     }
