@@ -30,6 +30,7 @@
     }
     let ready = false, mobile = false;
     onMount(() => {
+        document.body.style.overflowY = "scroll";
         setTimeout(() => {
             ready = true;
             if (640 >= screen.availWidth) {
