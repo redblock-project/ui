@@ -1,9 +1,12 @@
 <script>
     import { onMount } from "svelte";
     import { AppStore } from "$lib/utils/Store";
+    import { scale, fade } from "svelte/transition";
     import messages from "$lib/_locales/messages.json";
+    let ready = false;
     onMount(() => {
         document.body.style.overflowY = "scroll";
+        ready = true;
     });
 </script>
 
@@ -17,21 +20,28 @@
                 <span>{messages[$AppStore.lang].hall_header}</span>
             </h1>
             <h1 class="sub-title">
-                <span>{messages[$AppStore.lang].coming}</span>
+                <span>legendary</span>
             </h1>
-            <p class="default-text d-mb">
-                Октя́брьская револю́ция (полное официальное название в СССР —
-                «Вели́кая Октя́брьская социалисти́ческая револю́ция»; иные названия,
-                получившие распространение в историографии: Октя́брьский
-                переворот, «Октябрьское восстание», «Красный Октябрь», «Великий
-                Октябрь», «большевистский переворот») — социалистическая
-                революция в октябре (по новому стилю — в ноябре) 1917 года,
-                итогом которой стало свержение Временного правительства и
-                установление советской власти, что существенным образом повлияло
-                на дальнейший ход мировой истории. В историографии
-                рассматривается либо как самостоятельное историческое событие,
-                либо как продолжение Февральской революции.
-            </p>
+            <div class="legends">
+                <div class="legend" id="che">
+                    {#if ready}
+                        <img src="/img/CHE.png" alt="" in:fade|local={{ duration: 1200 }} />
+                    {/if}
+                    <span>Ernesto Che Guevara</span>
+                </div>
+                <div class="legend" id="lenin">
+                    {#if ready}
+                        <img src="/img/LENIN.png" alt="" in:scale|local={{ duration: 1000 }} />
+                    {/if}
+                    <span>Vladimir Ilyich Ulyanov</span>
+                </div>
+                <div class="legend" id="mao">
+                    {#if ready}
+                        <img src="/img/MAO.png" alt="" in:fade|local={{ duration: 1200 }} />
+                    {/if}
+                    <span>毛澤東</span>
+                </div>
+            </div>
         </div>
     </div>
 </main>
@@ -39,6 +49,38 @@
 <img src="/img/mark.png" alt="coin" class="mark-image d-dt" />
 
 <style>
+    .legends {
+        display: flex;
+        z-index: 99;
+        margin-top: -100px;
+        justify-content: center;
+    }
+    .legend span {
+        font-family: "Roboto Slab";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.25vw;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        color: #181818;
+        margin-top: -39px;
+    }
+    @media screen and (max-width: 1280px) {
+        .legends {
+            flex-wrap: wrap;
+        }
+        #lenin {
+            order: 1;
+        }
+        #che {
+            order: 2;
+        }
+        #mao {
+            order: 3;
+        }
+    }
     .wrapper {
         width: 100%;
         max-width: 83.3333333333vw;
@@ -68,16 +110,21 @@
         margin-bottom: 2.0833333333vw;
         display: inline-block;
     }
+    .sub-title {
+        position: absolute;
+        margin-top: 18vw;
+        z-index: 10;
+    }
     .sub-title span {
         font-family: "Painting With Chocolate";
         font-style: normal;
         font-weight: normal;
-        font-size: 2.25vw;
-        line-height: 2.25vw;
+        font-size: 15vw;
+        line-height: 15vw;
         display: flex;
         align-items: center;
         text-align: center;
-        color: #d81828;
+        color: #FFFFFF;
     }
 
     .second-title {
@@ -137,6 +184,15 @@
         display: none;
     }
     @media screen and (max-width: 640px) {
+        .legends {
+            margin-top: -54px;
+        }
+        .legend img {
+            width: 90vw;
+        }       
+        .legend span {
+            font-size: 4.75vw;
+        }
         .main-title {
             margin-top: 33.75vw;
             margin-bottom: 1.5625vw;
@@ -151,8 +207,12 @@
             line-height: 12.03125vw;
             margin-bottom: 4.6875vw;
         }
+        .sub-title {
+            margin-top: 180vw;
+            transform: rotate(74deg);
+        }
         .sub-title span {
-            font-size: 8vw;
+            font-size: 50vw;
             line-height: 10.03125vw;
             margin-bottom: 3.6875vw;
         }

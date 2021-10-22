@@ -17,8 +17,8 @@
     let navPath = "/";
     onMount(async () => {
         const images = 640 >= screen.availWidth ? 
-            ['bg.png', 'boy.png', 'coin.png', 'girl.png', 'image.jpg', 'modal.png', 'paper_s.jpg', 'person.png'] : 
-            ['bg.png', 'boy.png', 'coin.png', 'girl.png', 'image.jpg', 'modal.png', 'paper.jpg', 'person.png'];
+            ['bg.png', 'boy.png', 'coin.png', 'girl.png', 'image.jpg', 'modal.png', 'paper_s.jpg', 'person.png', 'CHE.png', 'LENIN.png', 'MAO.png'] : 
+            ['bg.png', 'boy.png', 'coin.png', 'girl.png', 'image.jpg', 'modal.png', 'paper.jpg', 'person.png', 'CHE.png', 'LENIN.png', 'MAO.png'];
         const promises = [];
         for (let img of images) {
             promises.push(preload(`/img/${img}`));
