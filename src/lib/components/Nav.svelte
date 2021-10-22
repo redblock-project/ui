@@ -96,23 +96,34 @@
                 }}>{messages[$AppStore.lang].nav_faq}</a
             > -->
         </div>
-        <div class="header__lang">
-            <a
-                href={getHref(navPath, "en")}
-                class:active={"en" === $AppStore.lang}
-                on:click={() => {
-                    $AppStore.lang = "en";
-                    $AppStore.mobileMenuShowed = false;
-                }}>EN</a
-            >
-            <!-- <a
-                href={getHref(navPath, "ru")}
-                class:active={"ru" === $AppStore.lang}
-                on:click={() => {
-                    $AppStore.lang = "ru";
-                    $AppStore.mobileMenuShowed = false;
-                }}>RU</a
-            > -->
+        <div class="right">
+            <div class="contacts">
+                <a href="https://twitter.com/RedBlockCommune" target="_blank">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI0IDQ4QzM3LjI1NDggNDggNDggMzcuMjU0OCA0OCAyNEM0OCAxMC43NDUyIDM3LjI1NDggMCAyNCAwQzEwLjc0NTIgMCAwIDEwLjc0NTIgMCAyNEMwIDM3LjI1NDggMTAuNzQ1MiA0OCAyNCA0OFoiIGZpbGw9IiMxQjlERjAiLz4KPHBhdGggZD0iTTE5LjYwODIgMzYuNjZDMzAuMjUyMiAzNi42NiAzNi4wNzIyIDI3Ljg0IDM2LjA3MjIgMjAuMTk2QzM2LjA3MjIgMTkuOTQ0IDM2LjA3MjIgMTkuNjkyIDM2LjA2MDIgMTkuNDUyQzM3LjE4ODIgMTguNjM2IDM4LjE3MjIgMTcuNjE2IDM4Ljk1MjIgMTYuNDUyQzM3LjkyMDIgMTYuOTA4IDM2LjgwNDIgMTcuMjIgMzUuNjI4MiAxNy4zNjRDMzYuODI4MiAxNi42NDQgMzcuNzQwMiAxNS41MTYgMzguMTcyMiAxNC4xNkMzNy4wNTYyIDE0LjgyIDM1LjgyMDIgMTUuMyAzNC41MDAyIDE1LjU2NEMzMy40NDQyIDE0LjQzNiAzMS45NDQyIDEzLjc0IDMwLjI3NjIgMTMuNzRDMjcuMDg0MiAxMy43NCAyNC40OTIyIDE2LjMzMiAyNC40OTIyIDE5LjUyNEMyNC40OTIyIDE5Ljk4IDI0LjU0MDIgMjAuNDI0IDI0LjY0ODIgMjAuODQ0QzE5LjgzNjIgMjAuNjA0IDE1LjU3NjIgMTguMyAxMi43MjAyIDE0Ljc5NkMxMi4yMjgyIDE1LjY0OCAxMS45NDAyIDE2LjY0NCAxMS45NDAyIDE3LjdDMTEuOTQwMiAxOS43MDQgMTIuOTYwMiAyMS40OCAxNC41MjAyIDIyLjUxMkMxMy41NzIyIDIyLjQ4OCAxMi42ODQyIDIyLjIyNCAxMS45MDQyIDIxLjc5MkMxMS45MDQyIDIxLjgxNiAxMS45MDQyIDIxLjg0IDExLjkwNDIgMjEuODY0QzExLjkwNDIgMjQuNjcyIDEzLjg5NjIgMjcgMTYuNTQ4MiAyNy41NEMxNi4wNjgyIDI3LjY3MiAxNS41NTIyIDI3Ljc0NCAxNS4wMjQyIDI3Ljc0NEMxNC42NTIyIDI3Ljc0NCAxNC4yOTIyIDI3LjcwOCAxMy45MzIyIDI3LjYzNkMxNC42NjQyIDI5Ljk0IDE2LjgwMDIgMzEuNjA4IDE5LjMzMjIgMzEuNjU2QzE3LjM1MjIgMzMuMjA0IDE0Ljg1NjIgMzQuMTI4IDEyLjE0NDIgMzQuMTI4QzExLjY3NjIgMzQuMTI4IDExLjIyMDIgMzQuMTA0IDEwLjc2NDIgMzQuMDQ0QzEzLjI5NjIgMzUuNyAxNi4zNDQyIDM2LjY2IDE5LjYwODIgMzYuNjZaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" />
+                </a>
+                <a href="https://discord.gg/redblock" target="_blank">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iMjQiIGZpbGw9IiM1ODY0RjIiLz4KPHBhdGggZD0iTTMyLjM4MTggMTYuMTA5OEMzMC44MDIxIDE1LjM4NSAyOS4xMDgxIDE0Ljg1MDkgMjcuMzM2OCAxNC41NDUxQzI3LjMwNDYgMTQuNTM5MiAyNy4yNzI0IDE0LjU1MzkgMjcuMjU1OCAxNC41ODM0QzI3LjAzNzkgMTQuOTcwOSAyNi43OTY2IDE1LjQ3NjQgMjYuNjI3NiAxNS44NzM4QzI0LjcyMjUgMTUuNTg4NiAyMi44MjcyIDE1LjU4ODYgMjAuOTYxMiAxNS44NzM4QzIwLjc5MjIgMTUuNDY3NiAyMC41NDIxIDE0Ljk3MDkgMjAuMzIzMyAxNC41ODM0QzIwLjMwNjYgMTQuNTU0OSAyMC4yNzQ0IDE0LjU0MDEgMjAuMjQyMiAxNC41NDUxQzE4LjQ3MTkgMTQuODUgMTYuNzc3OSAxNS4zODQgMTUuMTk3MiAxNi4xMDk4QzE1LjE4MzUgMTYuMTE1NyAxNS4xNzE4IDE2LjEyNTYgMTUuMTY0IDE2LjEzODNDMTEuOTUwOCAyMC45Mzg4IDExLjA3MDUgMjUuNjIxMyAxMS41MDIzIDMwLjI0NThDMTEuNTA0MyAzMC4yNjg0IDExLjUxNyAzMC4yOSAxMS41MzQ2IDMwLjMwMzhDMTMuNjU0NiAzMS44NjA3IDE1LjcwODEgMzIuODA1OCAxNy43MjM2IDMzLjQzMjNDMTcuNzU1OCAzMy40NDIyIDE3Ljc5IDMzLjQzMDQgMTcuODEwNSAzMy40MDM4QzE4LjI4NzMgMzIuNzUyNyAxOC43MTIzIDMyLjA2NjIgMTkuMDc2NyAzMS4zNDQzQzE5LjA5ODIgMzEuMzAyMSAxOS4wNzc2IDMxLjI1MTkgMTkuMDMzNyAzMS4yMzUyQzE4LjM1OTYgMzAuOTc5NSAxNy43MTc3IDMwLjY2NzcgMTcuMTAwMyAzMC4zMTM2QzE3LjA1MTQgMzAuMjg1MSAxNy4wNDc1IDMwLjIxNTMgMTcuMDkyNSAzMC4xODE4QzE3LjIyMjQgMzAuMDg0NSAxNy4zNTI0IDI5Ljk4MzIgMTcuNDc2NCAyOS44ODA5QzE3LjQ5ODkgMjkuODYyMiAxNy41MzAxIDI5Ljg1ODIgMTcuNTU2NSAyOS44N0MyMS42MTI4IDMxLjcyMiAyNi4wMDQzIDMxLjcyMiAzMC4wMTI3IDI5Ljg3QzMwLjAzOTEgMjkuODU3MyAzMC4wNzA0IDI5Ljg2MTIgMzAuMDkzOCAyOS44Nzk5QzMwLjIxNzkgMjkuOTgyMiAzMC4zNDc4IDMwLjA4NDUgMzAuNDc4NyAzMC4xODE4QzMwLjUyMzcgMzAuMjE1MyAzMC41MjA3IDMwLjI4NTEgMzAuNDcxOSAzMC4zMTM2QzI5Ljg1NDUgMzAuNjc0NiAyOS4yMTI2IDMwLjk3OTUgMjguNTM3NSAzMS4yMzQyQzI4LjQ5MzYgMzEuMjUwOSAyOC40NzQgMzEuMzAyMSAyOC40OTU1IDMxLjM0NDNDMjguODY3NyAzMi4wNjUyIDI5LjI5MjcgMzIuNzUxNyAyOS43NjA3IDMzLjQwMjhDMjkuNzgwMiAzMy40MzA0IDI5LjgxNTQgMzMuNDQyMiAyOS44NDc2IDMzLjQzMjNDMzEuODcyOCAzMi44MDU4IDMzLjkyNjQgMzEuODYwNyAzNi4wNDY0IDMwLjMwMzhDMzYuMDY1IDMwLjI5IDM2LjA3NjcgMzAuMjY5NCAzNi4wNzg2IDMwLjI0NjdDMzYuNTk1NCAyNC45MDA0IDM1LjIxMyAyMC4yNTYzIDMyLjQxNDEgMTYuMTM5M0MzMi40MDcyIDE2LjEyNTYgMzIuMzk1NSAxNi4xMTU3IDMyLjM4MTggMTYuMTA5OFpNMTkuNjgyNCAyNy40M0MxOC40NjEyIDI3LjQzIDE3LjQ1NDkgMjYuMzA4OCAxNy40NTQ5IDI0LjkzMTlDMTcuNDU0OSAyMy41NTUgMTguNDQxNyAyMi40MzM4IDE5LjY4MjQgMjIuNDMzOEMyMC45MzI5IDIyLjQzMzggMjEuOTI5NCAyMy41NjQ4IDIxLjkwOTggMjQuOTMxOUMyMS45MDk4IDI2LjMwODggMjAuOTIzMSAyNy40MyAxOS42ODI0IDI3LjQzWk0yNy45MTgxIDI3LjQzQzI2LjY5NjkgMjcuNDMgMjUuNjkwNyAyNi4zMDg4IDI1LjY5MDcgMjQuOTMxOUMyNS42OTA3IDIzLjU1NSAyNi42Nzc0IDIyLjQzMzggMjcuOTE4MSAyMi40MzM4QzI5LjE2ODYgMjIuNDMzOCAzMC4xNjUxIDIzLjU2NDggMzAuMTQ1NiAyNC45MzE5QzMwLjE0NTYgMjYuMzA4OCAyOS4xNjg2IDI3LjQzIDI3LjkxODEgMjcuNDNaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" />
+                </a>
+            </div>
+            <div class="header__lang">
+                <a
+                    href={getHref(navPath, "en")}
+                    class:active={"en" === $AppStore.lang}
+                    on:click={() => {
+                        $AppStore.lang = "en";
+                        $AppStore.mobileMenuShowed = false;
+                    }}>EN</a
+                >
+                <!-- AND FIRST CHILD MARGIN RIGHT DELETE IN MEDIA
+                     <a
+                    href={getHref(navPath, "ru")}
+                    class:active={"ru" === $AppStore.lang}
+                    on:click={() => {
+                        $AppStore.lang = "ru";
+                        $AppStore.mobileMenuShowed = false;
+                    }}>RU</a
+                > -->
+            </div>
         </div>
     </div>
 </header>
@@ -166,6 +177,25 @@
     }
     .header__nav a:last-child {
         margin-right: 0;
+    }
+    .right {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        position: relative;
+    }
+    .contacts {
+        display: flex;
+        margin-right: 24px;
+    }
+    .contacts a {
+        transition: transform 0.1s;
+    }
+    .contacts a:first-child {
+        margin-right: 8px;
+    }
+    .contacts a:hover {
+        transform: scale(0.95);
     }
     .header__lang {
         display: flex;
@@ -253,9 +283,24 @@
             color: #ffffff;
             text-transform: none;
         }
+        .right {
+            flex-wrap: wrap;
+            flex-direction: column;
+            top: 24px;
+            margin-left: 0;
+        }
+        .contacts {
+            margin-right: 0;
+        }
+        .contacts a:first-child {
+            margin-right: 24px;
+        }
         .header__lang {
             margin-left: 0;
-            margin-top: 12.5vw;
+            top: 24px;
+        }
+        .header__lang a:first-child {
+            margin-right: 0;
         }
         .header__lang a {
             font-size: 3.75vw;
