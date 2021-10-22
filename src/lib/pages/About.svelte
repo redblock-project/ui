@@ -189,7 +189,7 @@
             margin: 0 auto; */
             width: 87.5vw;
             position: absolute;
-            z-index: 999;
+            z-index: 11;
             display: block;
             margin: 0 auto;
             animation: moveToEnd 0.5s linear forwards;
