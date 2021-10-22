@@ -209,7 +209,7 @@
         }
         .sub-title {
             margin-top: 180vw;
-            transform: rotate(74deg);
+            transform: rotate(90deg);
         }
         .sub-title span {
             font-size: 50vw;
