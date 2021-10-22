@@ -141,6 +141,7 @@
         text-transform: uppercase;
         mix-blend-mode: difference;
         opacity: 0.5;
+        z-index: 2;
     }
 
     .default-text {
@@ -153,6 +154,7 @@
         overflow: hidden;
         mix-blend-mode: difference;
         opacity: 0.5;
+        z-index: 2;
     }
 
     .kolhoz-content {

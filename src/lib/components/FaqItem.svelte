@@ -16,7 +16,7 @@
     </div>
     {#if expand}
         <div class="desc" transition:slide|local={{ duration: 1000 }}>
-            {answer}
+            {@html answer}
         </div>
     {/if}
 </div>
@@ -38,7 +38,7 @@
         font-family: "Roboto Slab";
         font-style: normal;
         font-weight: normal;
-        font-size: 1.25vw;
+        font-size: 1.1vw;
         line-height: 32px;
         display: flex;
         align-items: center;
@@ -46,6 +46,9 @@
         color: #181818;
         justify-content: space-between;
         margin-left: -12px;
+    }
+    .faq .title span {
+        max-width: 90%;
     }
     .faq .title .ico {
         width: 32px;
@@ -70,9 +73,14 @@
     }
     @media screen and (max-width: 640px) {
         .faq .title {
-            font-size: 5.625vw;
+            font-size: 4.625vw;
+            line-height: 6vw;
+        }
+        .faq .title span {
+            max-width: 80%;
         }
         .faq .desc {
+            margin: 32px 0 0 0;
             line-height: 175%;
             font-size: 4vw;
         }

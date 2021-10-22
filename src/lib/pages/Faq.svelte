@@ -51,10 +51,9 @@
                 <span>{messages[$AppStore.lang].faq_header}</span>
             </h1>
             <div class="faq-content__columns">
-                <FaqItem question={messages[$AppStore.lang].faq_q1} answer={messages[$AppStore.lang].faq_a1} />
-                <FaqItem question={messages[$AppStore.lang].faq_q2} answer={messages[$AppStore.lang].faq_a2} />
-                <FaqItem question={messages[$AppStore.lang].faq_q3} answer={messages[$AppStore.lang].faq_a3} />
-                <FaqItem question={messages[$AppStore.lang].faq_q4} answer={messages[$AppStore.lang].faq_a4} />
+                {#each Array(13) as _, i}
+                    <FaqItem question={messages[$AppStore.lang][`faq_q${i + 1}`]} answer={messages[$AppStore.lang][`faq_a${i + 1}`]} />
+                {/each}
             </div>
         </div>
     </div>
@@ -115,6 +114,7 @@
         text-transform: uppercase;
         mix-blend-mode: difference;
         opacity: 0.5;
+        z-index: 2;
     }
     .faq-content {
         display: flex;

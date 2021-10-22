@@ -121,6 +121,7 @@
         overflow: hidden;
         mix-blend-mode: difference;
         opacity: 0.5;
+        z-index: 2;
     }
     .second-title {
         font-family: "Izvestija";
@@ -136,6 +137,7 @@
         text-transform: uppercase;
         mix-blend-mode: difference;
         opacity: 0.5;
+        z-index: 2;
     }
     .second-title--multi {
         position: absolute;
