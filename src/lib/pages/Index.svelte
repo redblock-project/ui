@@ -242,6 +242,9 @@
     .default-button span:hover {
         background: linear-gradient(180deg, #d81828, #ac1020);
     }
+    .default-button:active {
+        transform: scale(0.95);
+    }
     .default-button span::before {
         position: absolute;
         width: 0;
