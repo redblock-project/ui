@@ -261,7 +261,7 @@
         }
         .header .logotype {
             position: fixed;
-            top: 5vw;
+            top: 3.5vw;
             left: 5vw;
             z-index: 999;
         }
