@@ -45,6 +45,7 @@
 {#if !$AppStore.showLoader}
     <slot />
 {/if}
+<div class="main-bg"></div>
 <div class="decor-bg"></div>
 <div class="transparent-bg"></div>
 <button class="mb-switcher">
@@ -57,6 +58,16 @@
 <Modal />
 
 <style>
+    .main-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: url('/img/paper.jpg');
+        background-size: 100% 100%;
+        z-index: 1;
+    }
 .transparent-bg {
   position: fixed;
   top: 0;
@@ -131,6 +142,9 @@
     }
 }
 @media screen and (max-width: 640px) {
+    .main-bg {
+        background-image: url('/img/paper_s.jpg');
+    }
     svg {
         transition: transform 0.3s ease-in-out;
     }

@@ -159,7 +159,8 @@
             }
             100% {
                 transform: none;
-                position: static;
+                position: relative;
+                z-index: 11;
                 left: 0;
             }
         }

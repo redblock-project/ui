@@ -110,6 +110,7 @@
         position: absolute;
         right: 6.25vw;
         bottom: -6.25vw;
+        z-index: 99;
     }
     .default-text {
         font-family: "Times New Roman";
@@ -203,7 +204,7 @@
             }
             100% {
                 transform: none;
-                position: static;
+                position: relative;
             }
         }
         .default-text {
