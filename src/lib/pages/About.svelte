@@ -110,7 +110,7 @@
         position: absolute;
         right: 6.25vw;
         bottom: -6.25vw;
-        z-index: 99;
+        z-index: 11;
     }
     .default-text {
         font-family: "Times New Roman";
