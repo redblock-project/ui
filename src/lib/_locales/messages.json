@@ -7,8 +7,9 @@
         "nav_about": "About",
         "nav_mint": "Mint",
         "nav_kolhoz": "Kolhoz",
-        "nav_wallet": "My wallet",
-        "nav_hall": "Hall of fame",
+        "nav_wallet": "My Wallet",
+        "nav_hall": "Hall of Fame",
+        "nav_rarity": "Rarity",
         "nav_faq": "FAQ",
         "about_title": "About NFT Redblock",
         "about_header": "All NFT collectors, unite!",
@@ -52,7 +53,16 @@
         "faq_q12": "Which secondary NFT markets do you support?",
         "faq_a12": "OpenSea.",
         "faq_q13": "How does a leaderboard work?",
-        "faq_a13": "You have to invite to our Discord as many friends as possible to be eligible for a prize. First 5 leaders will receive 500/400/300/200/100 DAI."
+        "faq_a13": "You have to invite to our Discord as many friends as possible to be eligible for a prize. First 5 leaders will receive 500/400/300/200/100 DAI.",
+        "rarity_title": "RedBlock Rarity",
+        "rarity_total": "Total",
+        "rarity_men": "Men",
+        "rarity_women": "Women",
+        "rarity_desc": "Each comrade may be equipped with up to 8 different traits: clothing, right hand item, left hand item, headdress, extra cloth decoration, special facial attribute and a background (clothes and backgrounds are assigned to everyone).",
+        "rarity_adolescent": "Adolescent",
+        "rarity_muzzles": "Muzzles",
+        "rarity_bears": "Bears",
+        "rarity_legendary": "Legendary"
     },
     "ru": {
         "index_title": "Redblock NFT",
@@ -107,6 +117,15 @@
         "faq_q12": "",
         "faq_a12": "",
         "faq_q13": "",
-        "faq_a13": ""
+        "faq_a13": "",
+        "rarity_title": "RedBlock Rarity",
+        "rarity_total": "Total",
+        "rarity_men": "Men",
+        "rarity_women": "Women",
+        "rarity_desc": "Each comrade may be equipped with up to 8 different traits: clothing, right hand item, left hand item, headdress, extra cloth decoration, special facial attribute and a background (clothes and backgrounds are assigned to everyone).",
+        "rarity_adolescent": "Adolescent",
+        "rarity_muzzles": "Muzzles",
+        "rarity_bears": "Bears",
+        "rarity_legendary": "Legendary"
     }
 }

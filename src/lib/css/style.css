@@ -17,6 +17,7 @@
     src: url("/font/tnr.ttf");
 }
 body, html {
+    background: #D0C8C0;
     font-family: "Roboto Slab";
 }
 body {

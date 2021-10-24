@@ -63,7 +63,7 @@
         top: 0;
         left: 0;
         width: 100vw;
-        height: 100vh;
+        height: 110vh;
         background-image: url('/img/paper.jpg');
         background-size: 100% 100%;
         z-index: 1;

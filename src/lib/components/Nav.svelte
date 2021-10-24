@@ -89,6 +89,13 @@
                 }}>{messages[$AppStore.lang].nav_hall}</a
             >
             <a
+                href={getHref("rarity", $AppStore.lang)}
+                class:current={"/rarity" === navPath}
+                on:click={() => {
+                    navigate("/rarity");
+                }}>{messages[$AppStore.lang].nav_rarity}</a
+            >
+            <a
                 href={getHref("faq", $AppStore.lang)}
                 class:current={"/faq" === navPath}
                 on:click={() => {
@@ -279,7 +286,7 @@
         .header__nav a {
             margin-right: 0;
             font-size: 5.625vw;
-            line-height: 300%;
+            line-height: 250%;
             color: #ffffff;
             text-transform: none;
         }
