@@ -17,8 +17,8 @@
     let navPath = "/";
     onMount(async () => {
         const images = 640 >= screen.availWidth ? 
-            ['bg.png', 'boy.png', 'coin.png', 'girl.png', 'image.jpg', 'modal.png', 'paper_s.jpg', 'person.png', 'CHE.png', 'LENIN.png', 'MAO.png'] : 
-            ['bg.png', 'boy.png', 'coin.png', 'girl.png', 'image.jpg', 'modal.png', 'paper.jpg', 'person.png', 'CHE.png', 'LENIN.png', 'MAO.png'];
+            ['bg.png', 'boy.png', 'coin.png', 'girl.png', 'image.jpg', 'modal.png', 'paper_s.jpg', 'person.png', 'CHE.png', 'LENIN.png', 'MAO.png', 'bear.png'] : 
+            ['bg.png', 'boy.png', 'coin.png', 'girl.png', 'image.jpg', 'modal.png', 'paper.jpg', 'person.png', 'CHE.png', 'LENIN.png', 'MAO.png', 'bear.png'];
         const promises = [];
         for (let img of images) {
             promises.push(preload(`/img/${img}`));
@@ -92,18 +92,6 @@
   opacity: 0.2;
 }
 .mb-switcher {
-  display: none;
-}
-.mb-switcher .close-button {
-    display: block;
-}
-.mb-switcher.active .close-button {
-  display: block;
-}
-.hide {
-    display: none !important;
-}
-.mb-switcher.active .open-button {
   display: none;
 }
 .loader {
@@ -182,10 +170,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-    .mb-switcher .close-button {
-        width: 10vw;
-        height: 10vw;
     }
     .mb-switcher .open-button {
         width: 6.25vw;
