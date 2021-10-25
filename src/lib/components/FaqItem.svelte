@@ -1,5 +1,6 @@
 <script>
-    import { slide } from 'svelte/transition';
+    import { slide, scale, fly } from 'svelte/transition';
+    
     export let question = '';
     export let answer = '';
 
@@ -15,7 +16,7 @@
         <div class="ico" class:rotate={expand} />
     </div>
     {#if expand}
-        <div class="desc" transition:slide|local={{ duration: 1000 }}>
+        <div class="desc" transition:fly={{ x: 100, duration: 500 }}>
             {@html answer}
         </div>
     {/if}

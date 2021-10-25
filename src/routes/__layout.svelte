@@ -113,6 +113,7 @@
     width: 192px;
 }
 .loader .red {
+    transform: scale(1.02);
     opacity: 0;
     animation: clip 4s linear infinite;
 }
