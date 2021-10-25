@@ -4,6 +4,9 @@
     import { AppStore } from "$lib/utils/Store.js";
     import messages from "$lib/_locales/messages.json";
 
+    export let dark = true;
+    const logoSrc = dark ? '/img/logo.png' : '/img/logo_w.png';
+
     let navPath = "/";
     onMount(async () => {
         if ("ru" === document.location.pathname.split("/")[1])
@@ -32,7 +35,7 @@
     };
 </script>
 
-<header class="header" class:open={$AppStore.mobileMenuShowed}>
+<header class="header" class:light={!dark} class:open={$AppStore.mobileMenuShowed}>
     <div class="wrapper">
         <a
             href={getHref("/", $AppStore.lang)}
@@ -41,7 +44,7 @@
                 navigate("/");
             }}
         >
-            <img src="/img/logo.png" alt="logotype" />
+            <img src="{logoSrc}" alt="logotype" />
         </a>
         <a
             href={getHref("/", $AppStore.lang)}
@@ -177,6 +180,9 @@
         text-decoration: none;
         margin-right: 2.8645833333vw;
         transition: all 0.1s;
+    }
+    .light .header__nav a {
+        color:#ffffff;
     }
     .header__nav a:hover {
         transform: scale(0.95);
