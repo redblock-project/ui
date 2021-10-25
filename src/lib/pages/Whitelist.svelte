@@ -18,7 +18,7 @@
     <div class="wrapper">
         <div class="kolhoz-content">
             <h1 class="main-title">
-                <span>RED</span>
+                <span>WHITE</span>
             </h1>
             <h1 class="sub-title">
                 <span>list</span>
