@@ -236,7 +236,8 @@
             margin-top: 0;
         }
         .text {
-            font-size: 2.8125vw;
+            font-size: 3.8125vw;
+            line-height: 180%;
         }
         .sub-title span {
             font-size: 8vw;
