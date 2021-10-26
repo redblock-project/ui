@@ -14,6 +14,7 @@
         "ru" === $AppStore.lang
             ? (navPath = "/" + document.location.pathname.replace("/ru/", ""))
             : (navPath = document.location.pathname);
+        navPath = '/' === navPath[navPath.length - 1] ? navPath.slice(0, -1) : navPath;
         try {
             await screen.orientation.lock("portrait");
         } catch (e) {}
@@ -23,10 +24,11 @@
         href = "/" === href[0] ? href.substr(1) : href;
         href = "/" === href[0] ? href.substr(1) : href;
         if ("ru" === lang) {
-            return "" === href ? `/${lang}` : `/ru/${href}`;
+            href = "" === href ? `/${lang}` : `/ru/${href}/`;
         } else {
-            return `/${href}`;
+            href = `/${href}/`;
         }
+        return '//' === href ? '/' : href;
     };
     const navigate = (href) => {
         $AppStore.mobileMenuShowed = false;
@@ -64,6 +66,13 @@
                 }}>{messages[$AppStore.lang].nav_about}</a
             >
             <a
+                href={getHref("roadmap", $AppStore.lang)}
+                class:current={"/roadmap" === navPath}
+                on:click={() => {
+                    navigate("/roadmap");
+                }}>{messages[$AppStore.lang].nav_roadmap}</a
+            >
+            <a
                 href={getHref("mint", $AppStore.lang)}
                 class:current={"/mint" === navPath}
                 on:click={() => {
@@ -77,13 +86,13 @@
                     navigate("/kolhoz");
                 }}>{messages[$AppStore.lang].nav_kolhoz}</a
             >
-            <a
+            <!-- <a
                 href={getHref("wallet", $AppStore.lang)}
                 class:current={"/wallet" === navPath}
                 on:click={() => {
                     navigate("/wallet");
                 }}>{messages[$AppStore.lang].nav_wallet}</a
-            >
+            > -->
             <a
                 href={getHref("hall", $AppStore.lang)}
                 class:current={"/hall" === navPath}

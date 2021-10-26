@@ -9,6 +9,7 @@
         let target = "header";
         let width = "43.75vw";
         setTimeout(async () => {
+            if (null === document.querySelector(target)) return;
             const btn = document.querySelector(target).getBoundingClientRect();
             if (null !== document.querySelector(".girl-person")) {
                 const img = document.querySelector(".girl-person").getBoundingClientRect();
@@ -25,17 +26,18 @@
             }
         }, 9e2);
     }
-    let ready = false, mobile = false;
+    let ready = false, mobile = false, unique = 0;
     onMount(() => {
         document.body.style.overflowY = "scroll";
         setTimeout(() => {
             ready = true;
+            unique++;
             if (640 >= screen.availWidth) {
                 mobile = true;
             } else {
                 fixInterSection();
             }
-        }, 1e2);
+        }, 6e2);
     });
     const paperText = `for socialistic ideas to come true. First and foremost, we believe in the Soviet dream where all the people are respected and valued equally. Hence, our NFTs feature 893 different variables to exhibit the diversity of revolution tools. You can be anybody and you always make a difference. As Karl Marx said, “From each according to his ability, to each according to his needs”.`;
 </script>
@@ -65,9 +67,9 @@
 <h2 class="second-title second-title--multi d-dt">
     Развивается Красное знамя В наших красных сердцах!
 </h2>
-{#if ready}
-    <img src="/img/girl.png" alt="" class="girl-person" class:toEnd={mobile} in:scale|local={{ duration: 300 }} />
-{/if}
+{#key unique}
+    <img src="/img/girl.png" alt="" class="girl-person" class:showImg={0 < unique} in:scale={{ duration: 250 }} />
+{/key}
 
 <style>
     .wrapper {
@@ -111,6 +113,10 @@
         right: 6.25vw;
         bottom: -6.25vw;
         z-index: 11;
+        visibility: hidden;
+    }
+    .showImg {
+        visibility: visible;
     }
     .default-text {
         font-family: "Times New Roman";
@@ -189,7 +195,7 @@
             margin: 0 auto; */
             width: 87.5vw;
             position: absolute;
-            z-index: 11;
+            z-index: 21;
             display: block;
             margin: 0 auto;
             animation: moveToEnd 0.5s linear forwards;
@@ -205,6 +211,7 @@
             100% {
                 transform: none;
                 position: relative;
+                margin-bottom: -100vh;
             }
         }
         .default-text {

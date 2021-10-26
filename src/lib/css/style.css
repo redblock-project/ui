@@ -24,3 +24,13 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
 }
+.p_bold {
+    font-size: 1.4375vw;
+    line-height: 200%;
+    color: #181818;
+}
+@media screen and (max-width: 640px) {
+    .p_bold {
+        font-size: 4.25vw;
+    }
+}

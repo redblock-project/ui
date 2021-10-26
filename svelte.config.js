@@ -15,7 +15,8 @@ const config = {
 			fallback: null
 		}),
 		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#redblock'
+		target: '#redblock',
+		trailingSlash: 'always'
 	}
 };
 

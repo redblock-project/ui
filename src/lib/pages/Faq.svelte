@@ -10,6 +10,7 @@
         let target = ".faq";
         let width = "29vw";
         setTimeout(async () => {
+            if (null === document.querySelector(target)) return;
             const btn = document.querySelector(target).getBoundingClientRect();
             if (null !== document.querySelector(".boy-person")) {
                 const img = document.querySelector(".boy-person").getBoundingClientRect();
@@ -28,17 +29,18 @@
             }
         }, 9e2);
     }
-    let ready = false, mobile = false;
+    let ready = false, mobile = false, unique = 0;
     onMount(() => {
         document.body.style.overflowY = "scroll";
         setTimeout(() => {
             ready = true;
+            unique++;
             if (640 >= screen.availWidth) {
                 mobile = true;
             } else {
                 fixInterSection();
             }
-        }, 1e2);
+        }, 6e2);
     });
 </script>
 
@@ -60,9 +62,9 @@
     </div>
 </main>
 <h2 class="second-title d-mb">Октябрьская революция</h2>
-{#if ready}
-<img src="/img/boy.png" alt="" class="boy-person" in:fade|local={{ duration: 300 }} />
-{/if}
+{#key unique}
+    <img src="/img/boy.png" alt="" class="boy-person" class:showImg={0 < unique} in:fade={{ duration: 250 }} />
+{/key}
 
 <style>
     .wrapper {
@@ -91,6 +93,10 @@
         left: 0;
         bottom: 0;
         z-index: 99;
+        visibility: hidden;
+    }
+    .showImg {
+        visibility: visible;
     }
     .main-title span {
         font-family: "Arkhip";
@@ -162,6 +168,7 @@
                 position: relative;
                 z-index: 11;
                 left: 0;
+                margin-bottom: -100vh;
             }
         }
         .main-title {

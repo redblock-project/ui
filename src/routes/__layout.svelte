@@ -14,17 +14,16 @@
             image.src = src;
         });
     }
-    let navPath = "/";
+    let navPath = "/", dataPromise;
     onMount(async () => {
         const images = 640 >= screen.availWidth ? 
-            ['bg.png', 'boy.png', 'coin.png', 'girl.png', 'image.jpg', 'modal.png', 'paper_s.jpg', 'person.png', 'CHE.png', 'LENIN.png', 'MAO.png', 'bear.png'] : 
-            ['bg.png', 'boy.png', 'coin.png', 'girl.png', 'image.jpg', 'modal.png', 'paper.jpg', 'person.png', 'CHE.png', 'LENIN.png', 'MAO.png', 'bear.png'];
+            ['bg.png', 'coin.png', 'image.jpg', 'modal.png', 'paper_s.jpg', 'CHE.png', 'LENIN.png', 'MAO.png'] : 
+            ['bg.png', 'coin.png', 'image.jpg', 'modal.png', 'paper.jpg', 'CHE.png', 'LENIN.png', 'MAO.png'];
         const promises = [];
         for (let img of images) {
             promises.push(preload(`/img/${img}`));
         }
-        await Promise.all(promises);
-        $AppStore.showLoader = false;
+        dataPromise = Promise.all(promises);
         if ("ru" === document.location.pathname.split("/")[1])
             $AppStore.lang = "ru";
         "ru" === $AppStore.lang
@@ -33,6 +32,9 @@
         try {
             await screen.orientation.lock("portrait");
         } catch (e) {}
+
+        await dataPromise;
+        $AppStore.showLoader = false;
     });
 </script>
 {#if $AppStore.showLoader}
@@ -42,9 +44,9 @@
     </div>
 {/if}
 <Nav />
-{#if !$AppStore.showLoader}
+{#await dataPromise then data}
     <slot />
-{/if}
+{/await}
 <div class="main-bg"></div>
 <div class="decor-bg"></div>
 <div class="transparent-bg"></div>
@@ -113,7 +115,7 @@
     width: 192px;
 }
 .loader .red {
-    transform: scale(1.02);
+    transform: translateX(-1px) scale(1.02);
     opacity: 0;
     animation: clip 4s linear infinite;
 }

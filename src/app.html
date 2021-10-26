@@ -21,32 +21,9 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Rubik:wght@900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="/normalize.css">
-		<style>			
-			.loader {
-				top: 0;
-				left: 0;
-				position:absolute;
-				z-index: 999999999;
-				background: #D0C8C0;
-				width: 100vw;
-				height: 100vh;
-			}
-			.loader img {
-				height: 192px;
-				left: 50%;
-				margin-top: -86px;
-				margin-left: -86px;
-				position: absolute;
-				top: 50%;
-				width: 192px;
-			}
-		</style>
 		%svelte.head%
 	</head>
 	<body id="redblock">
-		<div class="loader">
-			<img src="/img/logo.png" class="black" alt="redblock" />
-		</div>
 		%svelte.body%
 	</body>
 </html>

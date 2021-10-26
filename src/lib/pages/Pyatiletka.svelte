@@ -6,10 +6,6 @@
     onMount(() => {
         document.body.style.overflowY = "scroll";
     });
-
-    const showModal = () => {
-        $AppStore.showModal = true;
-    };
 </script>
 
 <svelte:head>
@@ -30,51 +26,45 @@
             <div class="timeline">
                 <div class="card">
                     <div class="step">1</div>
-                    <div class="title">{messages[$AppStore.lang].pyatiletka_s1_title}</div>
+                    <div class="title">{@html messages[$AppStore.lang].pyatiletka_s1_title}<br/><span>Q4 2021</span></div>
                     <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s1_quote}</div>
                     <div class="content">{@html messages[$AppStore.lang].pyatiletka_s1_desc}</div>
                 </div>
                 <div class="card">
                     <div class="step">2</div>
-                    <div class="title">{messages[$AppStore.lang].pyatiletka_s2_title}</div>
+                    <div class="title">{@html messages[$AppStore.lang].pyatiletka_s2_title}<br/><span>Q1 2022</span></div>
                     <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s2_quote}</div>
                     <div class="content">{@html messages[$AppStore.lang].pyatiletka_s2_desc}</div>
                 </div>
                 <div class="card">
                     <div class="step">3</div>
-                    <div class="title">{messages[$AppStore.lang].pyatiletka_s3_title}</div>
+                    <div class="title">{@html messages[$AppStore.lang].pyatiletka_s3_title}<br/><span>Q1 2022</span></div>
                     <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s3_quote}</div>
                     <div class="content">{@html messages[$AppStore.lang].pyatiletka_s3_desc}</div>
                 </div>
                 <div class="card">
                     <div class="step">4</div>
-                    <div class="title">{messages[$AppStore.lang].pyatiletka_s4_title}</div>
+                    <div class="title">{@html messages[$AppStore.lang].pyatiletka_s4_title}<br/><span>Q2 2022</span></div>
                     <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s4_quote}</div>
                     <div class="content">{@html messages[$AppStore.lang].pyatiletka_s4_desc}</div>
                 </div>
                 <div class="card">
                     <div class="step">5</div>
-                    <div class="title">{messages[$AppStore.lang].pyatiletka_s5_title}</div>
+                    <div class="title">{@html messages[$AppStore.lang].pyatiletka_s5_title}<br/><span>Q2 2022</span></div>
                     <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s5_quote}</div>
                     <div class="content">{@html messages[$AppStore.lang].pyatiletka_s5_desc}</div>
                 </div>
                 <div class="card">
                     <div class="step">6</div>
-                    <div class="title">{messages[$AppStore.lang].pyatiletka_s6_title}</div>
+                    <div class="title">{@html messages[$AppStore.lang].pyatiletka_s6_title}<br/><span>Q3 2022</span></div>
                     <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s6_quote}</div>
                     <div class="content">{@html messages[$AppStore.lang].pyatiletka_s6_desc}</div>
                 </div>
                 <div class="card">
                     <div class="step">7</div>
-                    <div class="title">{messages[$AppStore.lang].pyatiletka_s7_title}</div>
+                    <div class="title">{@html messages[$AppStore.lang].pyatiletka_s7_title}<br/><span>Q1 1917</span></div>
                     <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s7_quote}</div>
                     <div class="content">{@html messages[$AppStore.lang].pyatiletka_s7_desc}</div>
-                </div>
-                <div class="card">
-                    <div class="step">8</div>
-                    <div class="title">{messages[$AppStore.lang].pyatiletka_s8_title}</div>
-                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s8_quote}</div>
-                    <div class="content">{@html messages[$AppStore.lang].pyatiletka_s8_desc}</div>
                 </div>
             </div>
         </div>
@@ -175,6 +165,18 @@
         letter-spacing: 0.24em;
         text-transform: uppercase;
         color: #181818;
+    }
+    .timeline .card .title span {
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 1.25vw;
+        text-align: center;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #D81828;
+        position: relative;
+        top: -10px;
     }
     .timeline .card .quote {
         font-weight: bold;
@@ -362,12 +364,14 @@
         left: 0;
         top: 17vw;
         z-index: 19;
+        opacity: 0.4;
     }
     .newspaper {
         position: fixed;
         right: 0;
         bottom: 2.0833333333vw;
         z-index: 19;
+        opacity: 0.4;
     }
     @media screen and (max-width: 1280px) {
         .timeline .card .step {
@@ -445,6 +449,18 @@
         }
         .timeline .card .title {
             font-size: 4.1vw;
+        }    
+        .timeline .card .title span {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 900;
+            font-size: 3.25vw;
+            text-align: center;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: #D81828;
+            position: relative;
+            top: -10px;
         }
         .timeline .card .quote {
             margin-top: 8px;
@@ -481,6 +497,18 @@
             font-size: 12vw;
             width: 100%;
             text-align: center;
+        } 
+        .timeline .card .title span {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 900;
+            font-size: 3.5vw;
+            text-align: center;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: #D81828;
+            position: relative;
+            top: -1px;
         }
         .kolhoz {
             display: none;

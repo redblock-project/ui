@@ -15,6 +15,7 @@
             width = "75vw";
         }
         setTimeout(async () => {
+            if (null === document.querySelector(target)) return;
             const btn = document.querySelector(target).getBoundingClientRect();
             if (null !== document.querySelector(".person-image")) {
                 const img = document.querySelector(".person-image").getBoundingClientRect();
@@ -32,16 +33,17 @@
         }, 9e2);
     }
 
-    let ready = false, mobile = false;
+    let ready = false, mobile = false, unique = 0;
     onMount(async () => {
         document.body.style.overflowY = "hidden";
         setTimeout(() => {
             ready = true;
+            unique++;
             if (640 >= screen.availWidth) {
                 mobile = true;
             }
             fixInterSection();
-        }, 1e2);
+        }, 6e2);
         if ("ru" === $AppStore.lang) mintLink = "/ru/mint";
     });
 
@@ -91,9 +93,9 @@
     </div>
 </main>
 <h2 class="second-title">Октябрьская революция</h2>
-{#if ready}
-    <img src="/img/person.png" alt="" class="person-image" in:slide|local={{ duration: 300 }} />
-{/if}
+{#key unique}
+    <img src="/img/person.png" alt="" class="person-image" class:showImg={0 < unique} in:slide={{ duration: 250 }} />
+{/key}
 
 <style>
     .wrapper {
@@ -114,6 +116,10 @@
         bottom: -6.7708333333vw;
         width: 48.9583333333vw;
         z-index: 20;
+        visibility: hidden;
+    }
+    .showImg {
+        visibility: visible;
     }
     .main-title {
         font-family: "Rubik";

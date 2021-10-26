@@ -42,6 +42,9 @@
                     <span>毛澤東</span>
                 </div>
             </div>
+            <div class="text">
+                {messages[$AppStore.lang].hall_text}
+            </div>
         </div>
     </div>
 </main>
@@ -49,6 +52,23 @@
 <img src="/img/mark.png" alt="coin" class="mark-image d-dt" />
 
 <style>
+    .text {
+        max-width: 1024px;
+        font-family: Roboto Slab;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.9375vw;
+        line-height: 200%;
+        text-align: center;
+        color: #181818;
+        margin-top: 64px;
+        margin-bottom: 128px;
+    }
+    @media screen and (min-width: 2560px) {
+        .text {
+            line-height: 150%;
+        }
+    }
     .legends {
         display: flex;
         z-index: 99;
@@ -233,6 +253,9 @@
             padding-left: 0;
             font-size: 2.8125vw;
             text-align: center;
+        }
+        .text {
+            font-size: 3.75vw;
         }
         .kolhoz-content .main-title {
             margin-top: 31.25vw;
