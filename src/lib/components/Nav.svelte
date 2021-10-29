@@ -80,10 +80,10 @@
                 }}>{messages[$AppStore.lang].nav_mint}</a
             >
             <a
-                href={getHref("kolhoz", $AppStore.lang)}
-                class:current={"/kolhoz" === navPath}
+                href={getHref("kolkhoz", $AppStore.lang)}
+                class:current={"/kolkhoz" === navPath}
                 on:click={() => {
-                    navigate("/kolhoz");
+                    navigate("/kolkhoz");
                 }}>{messages[$AppStore.lang].nav_kolhoz}</a
             >
             <!-- <a

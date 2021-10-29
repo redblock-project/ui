@@ -72,7 +72,7 @@
 </main>
 <h2 class="second-title d-mb">Октябрьская революция</h2>
 
-<img src="/img/kolhoz.png" alt="kolhoz" class="kolhoz d-dt" />
+<img src="/img/kolhoz.png" alt="kolkhoz" class="kolhoz d-dt" />
 <img src="/img/newspaper.png" alt="gazeta" class="newspaper d-dt" />
 
 <style>
