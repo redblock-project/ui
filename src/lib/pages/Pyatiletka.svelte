@@ -21,7 +21,7 @@
                 <span>RoadMap</span>
             </h2>
             <div class="desc">
-                {messages[$AppStore.lang].pyatiletka_desc}
+                {@html messages[$AppStore.lang].pyatiletka_desc}
             </div>
             <div class="timeline">
                 <div class="card">
@@ -65,6 +65,12 @@
                     <div class="title">{@html messages[$AppStore.lang].pyatiletka_s7_title}<br/><span>Q1 1917</span></div>
                     <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s7_quote}</div>
                     <div class="content">{@html messages[$AppStore.lang].pyatiletka_s7_desc}</div>
+                </div>
+                <div class="card">
+                    <div class="step">8</div>
+                    <div class="title">{@html messages[$AppStore.lang].pyatiletka_s8_title}<br/></div>
+                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s8_quote}</div>
+                    <div class="content">{@html messages[$AppStore.lang].pyatiletka_s8_desc}</div>
                 </div>
             </div>
         </div>
