@@ -29,7 +29,7 @@
                 </div>
                 <div class="mint-content__column">
                     <span class="mint-content__title">ERC20 {messages[$AppStore.lang].mint_tokens}</span>
-                    <div class:mint-content__group={'en' === $AppStore.lang} class:mint-content__group_ru={'ru' === $AppStore.lang}>
+                    <div class:mint-content__group={'en' === $AppStore.lang || 'cn' === $AppStore.lang} class:mint-content__group_ru={'ru' === $AppStore.lang}>
                         <div class="mint-content__item">
                             <span class="mint-content__sub-title">NCT</span>
                             <span class="mint-content__value">100/100</span>
