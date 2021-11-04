@@ -57,7 +57,7 @@
 <img src="/img/image.jpg" alt="" class="main-image" />
 <main>
     <div class="wrapper">
-        <h1 class="main-title" class:title_en={"en" === $AppStore.lang || "ch" === $AppStore.lang}>
+        <h1 class="main-title" class:title_en={"en" === $AppStore.lang || "cn" === $AppStore.lang}>
             <span>{messages[$AppStore.lang].index_h1_1}</span>
             {messages[$AppStore.lang].index_h1_2}
             <mark>Nov 7th</mark>

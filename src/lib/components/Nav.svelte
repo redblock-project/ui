@@ -11,12 +11,12 @@
     onMount(async () => {
         if ("ru" === document.location.pathname.split("/")[1])
             $AppStore.lang = "ru";
-        if ("ch" === document.location.pathname.split("/")[1])
-            $AppStore.lang = "ch";
+        if ("cn" === document.location.pathname.split("/")[1])
+            $AppStore.lang = "cn";
         if ("ru" === $AppStore.lang) {
             navPath = "/" + document.location.pathname.replace("/ru/", "");
-        } else if ("ch" === $AppStore.lang) {
-            navPath = "/" + document.location.pathname.replace("/ch/", "");
+        } else if ("cn" === $AppStore.lang) {
+            navPath = "/" + document.location.pathname.replace("/cn/", "");
         } else {
             navPath = document.location.pathname
         }
@@ -31,8 +31,8 @@
         href = "/" === href[0] ? href.substr(1) : href;
         if ("ru" === lang) {
             href = "" === href ? `/${lang}` : `/ru/${href}/`;
-        } else if ("ch" === lang) {
-            href = "" === href ? `/${lang}` : `/ch/${href}/`;
+        } else if ("cn" === lang) {
+            href = "" === href ? `/${lang}` : `/cn/${href}/`;
         } else {
             href = `/${href}/`;
         }
@@ -142,12 +142,12 @@
                     }}>EN</a
                 >
                 <a
-                    href={getHref(navPath, "ch")}
-                    class:active={"ch" === $AppStore.lang}
+                    href={getHref(navPath, "cn")}
+                    class:active={"cn" === $AppStore.lang}
                     on:click={() => {
-                        $AppStore.lang = "ch";
+                        $AppStore.lang = "cn";
                         $AppStore.mobileMenuShowed = false;
-                    }}>CH</a
+                    }}>CN</a
                 >
                 <!-- AND FIRST CHILD MARGIN RIGHT DELETE IN MEDIA
                      <a
