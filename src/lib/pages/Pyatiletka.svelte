@@ -15,7 +15,7 @@
     <div class="wrapper">
         <div class="pyatiletka-content">
             <h1 class="main-title">
-                <span>{messages[$AppStore.lang].pyatiletka_header}</span>
+                <span>{@html messages[$AppStore.lang].pyatiletka_header}</span>
             </h1>
             <h2 class="sub-title">
                 <span>RoadMap</span>
@@ -116,13 +116,13 @@
         top: -13.020833333333334vw;
     }
     .timeline .card:nth-child(3) {
-        top: -23.4375vw;
+        top: -20.4375vw;
     }
     .timeline .card:nth-child(4) {
-        top: -31.25vw;
+        top: -28.25vw;
     }
     .timeline .card:nth-child(5) {
-        top: -41.66666666666667vw;
+        top: -38.66666666666667vw;
     }
     .timeline .card:nth-child(6) {
         top: -33.85416666666667vw;
@@ -305,6 +305,7 @@
         margin-bottom: 5.7291666667vw;
         margin-top: 4.375vw;
         display: block;
+        text-align: center;
     }
     .main-title span {
         font-family: "Arkhip";
