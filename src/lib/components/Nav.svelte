@@ -13,9 +13,15 @@
     onMount(async () => {
         if ("ru" === document.location.pathname.split("/")[1])
             $AppStore.lang = "ru";
-        "ru" === $AppStore.lang
-            ? (navPath = "/" + document.location.pathname.replace("/ru/", ""))
-            : (navPath = document.location.pathname);
+        if ("cn" === document.location.pathname.split("/")[1])
+            $AppStore.lang = "cn";
+        if ("ru" === $AppStore.lang) {
+            navPath = "/" + document.location.pathname.replace("/ru/", "");
+        } else if ("cn" === $AppStore.lang) {
+            navPath = "/" + document.location.pathname.replace("/cn/", "");
+        } else {
+            navPath = document.location.pathname
+        }
         navPath = '/' === navPath[navPath.length - 1] ? navPath.slice(0, -1) : navPath;
         try {
             await screen.orientation.lock("portrait");
@@ -33,6 +39,8 @@
         href = "/" === href[0] ? href.substr(1) : href;
         if ("ru" === lang) {
             href = "" === href ? `/${lang}` : `/ru/${href}/`;
+        } else if ("cn" === lang) {
+            href = "" === href ? `/${lang}` : `/cn/${href}/`;
         } else {
             href = `/${href}/`;
         }
@@ -177,6 +185,14 @@
                         $AppStore.lang = "en";
                         $AppStore.mobileMenuShowed = false;
                     }}>EN</a
+                >
+                <a
+                    href={getHref(navPath, "cn")}
+                    class:active={"cn" === $AppStore.lang}
+                    on:click={() => {
+                        $AppStore.lang = "cn";
+                        $AppStore.mobileMenuShowed = false;
+                    }}>CN</a
                 >
                 <!-- AND FIRST CHILD MARGIN RIGHT DELETE IN MEDIA
                      <a
@@ -451,7 +467,6 @@
             position: fixed;
         }
         .header__nav {
-            margin-top: 192px;
             flex-direction: column;
         }
         .header__nav a {
@@ -469,9 +484,6 @@
         }
         .contacts {
             margin-right: 0;
-        }
-        .contacts a:first-child {
-            margin-right: 24px;
         }
         .header__lang {
             margin-left: 0;
