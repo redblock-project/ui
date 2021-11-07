@@ -42,7 +42,7 @@
 
 <style>
     h3 {
-        margin-top: 150px;
+        margin-top: 50px;
         font-family: 'Arkhip';
         font-style: normal;
         font-weight: normal;
@@ -170,7 +170,7 @@
         cursor: pointer;
         transition: transform 0.1;
         margin-bottom: 32px;
-        margin-top: 100px;
+        margin-top: 32px;
     }
 
     .default-button span:hover {
@@ -296,6 +296,10 @@
         }
         .d-mb {
             display: inline;
+        }
+        h3 {
+            margin-top: 50px;
+            font-size: 5.5vw;
         }
     }
 </style>
