@@ -7,7 +7,7 @@
     export let dark = true;
     const logoSrc = dark ? '/img/logo.png' : '/img/logo_w.png';
 
-    const links = ['about', 'roadmap', 'mint', 'whitelist', 'wallet', 'farm', 'hall', 'rarity', 'faq'];
+    const links = ['about', 'roadmap', 'mint', 'whitelist', 'farm', 'hall', 'rarity', 'faq'];
 
     let navPath = "/", account = '';
     onMount(async () => {
