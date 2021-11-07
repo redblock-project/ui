@@ -27,9 +27,10 @@
                 {@html messages[$AppStore.lang].redlist_content}
             </div>
         
-            <div class="default-button" on:click={showModal}>
-                <span>{messages[$AppStore.lang].mint_connect}</span>
-            </div>
+            <h3>{messages[$AppStore.lang].redlist_discord}</h3>
+            <a class="default-button" href="https://discord.gg/redblock" target="_blank">
+                <span>{messages[$AppStore.lang].redlist_discord_btn}</span>
+            </a>
         </div>
         <div class="back">
             <img src="/img/logo_redlist.png" alt="" />
@@ -40,6 +41,19 @@
 <img src="/img/mark.png" alt="coin" class="mark-image d-dt" />
 
 <style>
+    h3 {
+        margin-top: 150px;
+        font-family: 'Arkhip';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 2.5vw;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        margin-bottom: 0;
+    }
     .wrapper {
         width: 100%;
         max-width: 83.3333333333vw;

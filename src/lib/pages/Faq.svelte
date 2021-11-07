@@ -130,7 +130,7 @@
         position: relative;
         z-index: 20;
         color: #181818;
-        z-index: 999;
+        z-index: 998;
     }
     .mint-content .main-title span {
         margin-bottom: 0;

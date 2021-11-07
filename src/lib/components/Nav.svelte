@@ -7,23 +7,25 @@
     export let dark = true;
     const logoSrc = dark ? '/img/logo.png' : '/img/logo_w.png';
 
-    let navPath = "/";
+    const links = ['about', 'roadmap', 'mint', 'whitelist', 'wallet', 'farm', 'hall', 'rarity', 'faq'];
+
+    let navPath = "/", account = '';
     onMount(async () => {
         if ("ru" === document.location.pathname.split("/")[1])
             $AppStore.lang = "ru";
-        if ("cn" === document.location.pathname.split("/")[1])
-            $AppStore.lang = "cn";
-        if ("ru" === $AppStore.lang) {
-            navPath = "/" + document.location.pathname.replace("/ru/", "");
-        } else if ("cn" === $AppStore.lang) {
-            navPath = "/" + document.location.pathname.replace("/cn/", "");
-        } else {
-            navPath = document.location.pathname
-        }
+        "ru" === $AppStore.lang
+            ? (navPath = "/" + document.location.pathname.replace("/ru/", ""))
+            : (navPath = document.location.pathname);
         navPath = '/' === navPath[navPath.length - 1] ? navPath.slice(0, -1) : navPath;
         try {
             await screen.orientation.lock("portrait");
         } catch (e) {}
+
+        window.addEventListener("unhandledrejection", function(promiseRejectionEvent) { 
+            $AppStore.showModal = true;
+            $AppStore.walletError = true;
+            $AppStore.err = promiseRejectionEvent.reason.message.split('{')[0];
+        });
     });
 
     const getHref = (href, lang) => {
@@ -31,18 +33,32 @@
         href = "/" === href[0] ? href.substr(1) : href;
         if ("ru" === lang) {
             href = "" === href ? `/${lang}` : `/ru/${href}/`;
-        } else if ("cn" === lang) {
-            href = "" === href ? `/${lang}` : `/cn/${href}/`;
         } else {
             href = `/${href}/`;
         }
         return '//' === href ? '/' : href;
     };
     const navigate = (href) => {
+        hideDesktopMenu();
         $AppStore.mobileMenuShowed = false;
         navPath = href;
         return true;
     };
+    $: {
+        if (0 === $AppStore.walletAddress.length) {
+            account = '';
+        } else {
+            account = `${($AppStore.walletAddress.substr(0, 6))}...${($AppStore.walletAddress.substr($AppStore.walletAddress.length - 4))}`;
+        }
+    }
+
+    let desktopMenu = false;
+    const showDesktopMenu = () => {
+        desktopMenu = true;
+    }
+    const hideDesktopMenu = () => {
+        desktopMenu = false;
+    }
 </script>
 
 <header class="header" class:light={!dark} class:open={$AppStore.mobileMenuShowed}>
@@ -65,7 +81,14 @@
         >
             <img src="/img/logo_w.png" alt="logotype" />
         </a>
-        <div class="header__nav">
+        <div class="header__nav_desktop">
+            <button class="m-switcher" class:white={!dark} on:click|self|stopPropagation={showDesktopMenu}>
+                <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="open-button" on:click={showDesktopMenu}>
+                    <rect y="8" width="40" height="4" fill="#444444" id="top" />
+                    <rect y="16" width="40" height="4" fill="#565656" id="middle" />
+                    <rect y="24" width="40" height="4" fill="#444444" id="bottom" />
+                </svg>
+            </button>
             <a
                 href={getHref("about", $AppStore.lang)}
                 class:current={"/about" === navPath}
@@ -88,32 +111,11 @@
                 }}>{messages[$AppStore.lang].nav_mint}</a
             >
             <a
-                href={getHref("farm", $AppStore.lang)}
-                class:current={"/farm" === navPath}
+                href={getHref("whitelist", $AppStore.lang)}
+                class:current={"/whitelist" === navPath}
                 on:click={() => {
-                    navigate("/farm");
-                }}>{messages[$AppStore.lang].nav_kolhoz}</a
-            >
-            <!-- <a
-                href={getHref("wallet", $AppStore.lang)}
-                class:current={"/wallet" === navPath}
-                on:click={() => {
-                    navigate("/wallet");
-                }}>{messages[$AppStore.lang].nav_wallet}</a
-            > -->
-            <a
-                href={getHref("hall", $AppStore.lang)}
-                class:current={"/hall" === navPath}
-                on:click={() => {
-                    navigate("/hall");
-                }}>{messages[$AppStore.lang].nav_hall}</a
-            >
-            <a
-                href={getHref("rarity", $AppStore.lang)}
-                class:current={"/rarity" === navPath}
-                on:click={() => {
-                    navigate("/rarity");
-                }}>{messages[$AppStore.lang].nav_rarity}</a
+                    navigate("/whitelist");
+                }}>{messages[$AppStore.lang].nav_whitelist}</a
             >
             <a
                 href={getHref("faq", $AppStore.lang)}
@@ -123,7 +125,42 @@
                 }}>{messages[$AppStore.lang].nav_faq}</a
             >
         </div>
+        <div class="backdrop" class:backdrop_open={desktopMenu} on:click|self|stopPropagation={hideDesktopMenu}></div>
+        <div class="header__nav_desktop_exp" class:desktop_open={desktopMenu}>
+            <a
+                href={getHref("/", $AppStore.lang)}
+                class="logotype"
+                on:click={() => {
+                    navigate("/");
+                }}
+            >
+                <img src="/img/logo_w.png" alt="logotype" />
+            </a>
+            {#each links as link (link)}
+                <a
+                    href={getHref(link, $AppStore.lang)}
+                    class:current={`/${link}` === navPath}
+                    on:click={() => {
+                        navigate(`/${link}`);
+                    }}>{messages[$AppStore.lang][`nav_${link}`]}</a
+                >
+            {/each}
+        </div>
+        <div class="header__nav">
+            {#each links as link (link)}
+                <a
+                    href={getHref(link, $AppStore.lang)}
+                    class:current={`/${link}` === navPath}
+                    on:click={() => {
+                        navigate(`/${link}`);
+                    }}>{messages[$AppStore.lang][`nav_${link}`]}</a
+                >
+            {/each}
+        </div>
         <div class="right">
+            <div class="wallet" class:hide={0 === $AppStore.walletAddress.length}>
+                {account}
+            </div>
             <div class="contacts">
                 <a href="https://twitter.com/RedBlockCommune" target="_blank">
                     <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI0IDQ4QzM3LjI1NDggNDggNDggMzcuMjU0OCA0OCAyNEM0OCAxMC43NDUyIDM3LjI1NDggMCAyNCAwQzEwLjc0NTIgMCAwIDEwLjc0NTIgMCAyNEMwIDM3LjI1NDggMTAuNzQ1MiA0OCAyNCA0OFoiIGZpbGw9IiMxQjlERjAiLz4KPHBhdGggZD0iTTE5LjYwODIgMzYuNjZDMzAuMjUyMiAzNi42NiAzNi4wNzIyIDI3Ljg0IDM2LjA3MjIgMjAuMTk2QzM2LjA3MjIgMTkuOTQ0IDM2LjA3MjIgMTkuNjkyIDM2LjA2MDIgMTkuNDUyQzM3LjE4ODIgMTguNjM2IDM4LjE3MjIgMTcuNjE2IDM4Ljk1MjIgMTYuNDUyQzM3LjkyMDIgMTYuOTA4IDM2LjgwNDIgMTcuMjIgMzUuNjI4MiAxNy4zNjRDMzYuODI4MiAxNi42NDQgMzcuNzQwMiAxNS41MTYgMzguMTcyMiAxNC4xNkMzNy4wNTYyIDE0LjgyIDM1LjgyMDIgMTUuMyAzNC41MDAyIDE1LjU2NEMzMy40NDQyIDE0LjQzNiAzMS45NDQyIDEzLjc0IDMwLjI3NjIgMTMuNzRDMjcuMDg0MiAxMy43NCAyNC40OTIyIDE2LjMzMiAyNC40OTIyIDE5LjUyNEMyNC40OTIyIDE5Ljk4IDI0LjU0MDIgMjAuNDI0IDI0LjY0ODIgMjAuODQ0QzE5LjgzNjIgMjAuNjA0IDE1LjU3NjIgMTguMyAxMi43MjAyIDE0Ljc5NkMxMi4yMjgyIDE1LjY0OCAxMS45NDAyIDE2LjY0NCAxMS45NDAyIDE3LjdDMTEuOTQwMiAxOS43MDQgMTIuOTYwMiAyMS40OCAxNC41MjAyIDIyLjUxMkMxMy41NzIyIDIyLjQ4OCAxMi42ODQyIDIyLjIyNCAxMS45MDQyIDIxLjc5MkMxMS45MDQyIDIxLjgxNiAxMS45MDQyIDIxLjg0IDExLjkwNDIgMjEuODY0QzExLjkwNDIgMjQuNjcyIDEzLjg5NjIgMjcgMTYuNTQ4MiAyNy41NEMxNi4wNjgyIDI3LjY3MiAxNS41NTIyIDI3Ljc0NCAxNS4wMjQyIDI3Ljc0NEMxNC42NTIyIDI3Ljc0NCAxNC4yOTIyIDI3LjcwOCAxMy45MzIyIDI3LjYzNkMxNC42NjQyIDI5Ljk0IDE2LjgwMDIgMzEuNjA4IDE5LjMzMjIgMzEuNjU2QzE3LjM1MjIgMzMuMjA0IDE0Ljg1NjIgMzQuMTI4IDEyLjE0NDIgMzQuMTI4QzExLjY3NjIgMzQuMTI4IDExLjIyMDIgMzQuMTA0IDEwLjc2NDIgMzQuMDQ0QzEzLjI5NjIgMzUuNyAxNi4zNDQyIDM2LjY2IDE5LjYwODIgMzYuNjZaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" />
@@ -141,14 +178,6 @@
                         $AppStore.mobileMenuShowed = false;
                     }}>EN</a
                 >
-                <a
-                    href={getHref(navPath, "cn")}
-                    class:active={"cn" === $AppStore.lang}
-                    on:click={() => {
-                        $AppStore.lang = "cn";
-                        $AppStore.mobileMenuShowed = false;
-                    }}>CN</a
-                >
                 <!-- AND FIRST CHILD MARGIN RIGHT DELETE IN MEDIA
                      <a
                     href={getHref(navPath, "ru")}
@@ -164,6 +193,118 @@
 </header>
 
 <style>
+    .white svg rect {
+        fill: #dcdcdc;
+    }
+    .backdrop_open {
+        display: block !important;
+    }
+    .desktop_open {
+        display: flex !important;
+        opacity: 0;
+        animation: fade 0.1s forwards;
+    }
+    @keyframes fade {
+        100% { opacity: 1; }
+    }
+    .backdrop {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background: #000000a3;
+        width: 100vw;
+        height: 100vh;
+        z-index: 99999;
+    }
+    .header__nav_desktop_exp {
+        display: none;
+        position: fixed;
+        top: 0;
+        background: url('/img/mb-bg.jpg');
+        z-index: 99999;
+        height: 100vh;
+    }
+    .header__nav_desktop_exp {
+        flex-direction: column;
+    }
+    .header__nav_desktop_exp a {
+        text-decoration: none;
+        margin-right: 0;
+        font-size: 1.25vw;
+        padding: 32px 48px 0 48px;
+        color: #ffffff;
+        text-transform: none;
+    }
+    .header__nav_desktop_exp a:hover {
+        transform: scale(0.95);
+        color: #181818;
+    }
+    .header__nav_desktop {
+        display: flex;
+        align-items: center;
+    }
+    .header__nav_desktop a {
+        font-weight: normal;
+        font-size: 1.25vw;
+        line-height: 1.6666666667vw;
+        text-transform: uppercase;
+        color: #181818;
+        text-decoration: none;
+        margin-right: 2.8645833333vw;
+        transition: all 0.1s;
+    }
+    .light .header__nav_desktop a {
+        color:#ffffff;
+    }
+    .header__nav_desktop a:hover {
+        transform: scale(0.95);
+        color: #e01828;
+    }
+    .header__nav_desktop a:last-child {
+        margin-right: 0;
+    }
+    .header__nav_desktop button {
+        margin-right: 2vw;
+        transition: all 0.1s;
+    }
+    .header__nav_desktop button:hover {
+        transform: scale(0.95);
+    }
+    .header__nav_desktop button:hover svg rect {
+        fill: #e01828 !important;
+    }
+
+    .m-switcher {
+        border: 0;
+        outline: 0;
+        background: none;
+        cursor: pointer;
+    }
+    .wallet {
+        width: 160px;
+        height: 48px;
+        margin-right: 32px;
+        background: #F8C000;
+        border: 2px solid #F8D858;
+        box-sizing: border-box;
+        border-radius: 4px;
+
+        font-family: 'Roboto Slab';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 48px;
+        color: #181818;
+    }
+    .hide {
+        display: none;
+    }
     .wrapper {
         width: 100%;
         max-width: 83.3333333333vw;
@@ -193,7 +334,7 @@
         height: 5vw;
     }
     .header__nav {
-        display: flex;
+        display: none;
         align-items: center;
     }
     .header__nav a {
@@ -205,16 +346,6 @@
         text-decoration: none;
         margin-right: 2.8645833333vw;
         transition: all 0.1s;
-    }
-    .light .header__nav a {
-        color:#ffffff;
-    }
-    .header__nav a:hover {
-        transform: scale(0.95);
-        color: #e01828;
-    }
-    .header__nav a:last-child {
-        margin-right: 0;
     }
     .right {
         display: flex;
@@ -270,6 +401,10 @@
         color: #686060 !important;
     }
     @media screen and (max-width: 640px) {
+        .wallet {
+            margin-right: 0;
+            margin-bottom: 16px;
+        }
         .header {
             position: fixed;
             top: 0;
@@ -280,6 +415,7 @@
             z-index: 50;
             right: -100%;
             transition: right 0.3s ease-in-out;
+            overflow-y: scroll;
         }
         .header.open {
             position: fixed;
@@ -311,7 +447,11 @@
             display: block;
             position: absolute;
         }
+        .header.open .logotype.mobile-logo {
+            position: fixed;
+        }
         .header__nav {
+            margin-top: 192px;
             flex-direction: column;
         }
         .header__nav a {
@@ -336,6 +476,7 @@
         .header__lang {
             margin-left: 0;
             top: 24px;
+            margin-bottom: 64px;
         }
         .header__lang a:first-child {
             margin-right: 0;
@@ -348,6 +489,12 @@
         }
         .header__lang a:first-child {
             margin-right: 2.5vw;
+        }
+        .header__nav_desktop {
+            display: none;
+        }
+        .header__nav {
+            display: flex;
         }
     }
 </style>
