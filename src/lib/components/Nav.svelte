@@ -433,7 +433,7 @@
             margin-bottom: 16px;
         }
         .header {
-            position: fixed;
+            position: relative;
             top: 0;
             bottom: 0;
             left: auto;
@@ -443,6 +443,9 @@
             right: -100%;
             transition: right 0.3s ease-in-out;
             overflow-y: scroll;
+        }
+        .wrapper {
+            flex-direction: inherit;
         }
         .header.open {
             position: fixed;
