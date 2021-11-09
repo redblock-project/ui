@@ -27,19 +27,19 @@
                     {#if ready}
                         <img src="/img/CHE.png" alt="" in:fade|local={{ duration: 1200 }} />
                     {/if}
-                    <span>Ernesto Che Guevara</span>
+                    <span>{messages[$AppStore.lang].hall_che}</span>
                 </div>
                 <div class="legend" id="lenin">
                     {#if ready}
                         <img src="/img/LENIN.png" alt="" in:scale|local={{ duration: 1000 }} />
                     {/if}
-                    <span>Vladimir Ilyich Ulyanov</span>
+                    <span>{messages[$AppStore.lang].hall_len}</span>
                 </div>
                 <div class="legend" id="mao">
                     {#if ready}
                         <img src="/img/MAO.png" alt="" in:fade|local={{ duration: 1200 }} />
                     {/if}
-                    <span>毛澤東</span>
+                    <span>{messages[$AppStore.lang].hall_mao}</span>
                 </div>
             </div>
             <div class="text">

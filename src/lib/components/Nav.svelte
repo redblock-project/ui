@@ -7,7 +7,7 @@
     export let dark = true;
     const logoSrc = dark ? '/img/logo.png' : '/img/logo_w.png';
 
-    const links = ['about', 'roadmap', 'mint', 'whitelist', 'farm', 'hall', 'rarity', 'faq'];
+    const links = ['about', 'roadmap', 'mint', 'allies', 'whitelist', 'team', 'farm', 'hall', 'rarity', 'faq'];
 
     let navPath = "/", account = '';
     onMount(async () => {
@@ -98,20 +98,6 @@
                 </svg>
             </button>
             <a
-                href={getHref("about", $AppStore.lang)}
-                class:current={"/about" === navPath}
-                on:click={() => {
-                    navigate("/about");
-                }}>{messages[$AppStore.lang].nav_about}</a
-            >
-            <a
-                href={getHref("roadmap", $AppStore.lang)}
-                class:current={"/roadmap" === navPath}
-                on:click={() => {
-                    navigate("/roadmap");
-                }}>{messages[$AppStore.lang].nav_roadmap}</a
-            >
-            <a
                 href={getHref("mint", $AppStore.lang)}
                 class:current={"/mint" === navPath}
                 on:click={() => {
@@ -119,11 +105,25 @@
                 }}>{messages[$AppStore.lang].nav_mint}</a
             >
             <a
+                href={getHref("allies", $AppStore.lang)}
+                class:current={"/allies" === navPath}
+                on:click={() => {
+                    navigate("/allies");
+                }}>{messages[$AppStore.lang].nav_allies}</a
+            >
+            <a
                 href={getHref("whitelist", $AppStore.lang)}
                 class:current={"/whitelist" === navPath}
                 on:click={() => {
                     navigate("/whitelist");
                 }}>{messages[$AppStore.lang].nav_whitelist}</a
+            >
+            <a
+                href={getHref("team", $AppStore.lang)}
+                class:current={"/team" === navPath}
+                on:click={() => {
+                    navigate("/team");
+                }}>{messages[$AppStore.lang].nav_team}</a
             >
             <a
                 href={getHref("faq", $AppStore.lang)}
@@ -185,6 +185,14 @@
                         $AppStore.lang = "en";
                         $AppStore.mobileMenuShowed = false;
                     }}>EN</a
+                >
+                <a
+                    href={getHref(navPath, "ru")}
+                    class:active={"ru" === $AppStore.lang}
+                    on:click={() => {
+                        $AppStore.lang = "ru";
+                        $AppStore.mobileMenuShowed = false;
+                    }}>RU</a
                 >
                 <a
                     href={getHref(navPath, "cn")}
@@ -409,6 +417,9 @@
     .header__lang a:first-child {
         margin-right: 8px;
     }
+    .header__lang a:nth-child(2) {
+        margin-right: 8px;
+    }
     .header__lang a.active {
         background: #e01828;
     }
@@ -499,7 +510,7 @@
             width: 15vw;
             height: 15vw;
         }
-        .header__lang a:first-child {
+        .header__lang a:first-child, .header__lang a:nth-child(2) {
             margin-right: 2.5vw;
         }
         .header__nav_desktop {
