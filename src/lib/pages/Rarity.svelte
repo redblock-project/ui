@@ -207,7 +207,8 @@
         }
         .rarity .left {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+            flex-direction: column;
             width: 100%;
             max-width: 99vw;
         }
