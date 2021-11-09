@@ -518,6 +518,7 @@
         }
         .header__nav {
             display: flex;
+            margin-top: 124px;
         }
     }
 </style>

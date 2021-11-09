@@ -68,7 +68,7 @@
     Развивается Красное знамя В наших красных сердцах!
 </h2>
 {#key unique}
-    <img src="/img/student.png" alt="" class="girl-person" class:showImg={0 < unique} in:scale={{ duration: 250 }} />
+    <img src="/img/allies.png" alt="" class="girl-person" class:showImg={0 < unique} in:scale={{ duration: 250 }} />
 {/key}
 
 <style>
@@ -108,10 +108,10 @@
         max-width: 41.6666666667vw;
     }
     .girl-person {
-        width: 43.75vw;
-        position: absolute;
+        width: 50.75vw;
+        position: fixed;
         right: 6.25vw;
-        bottom: -6.25vw;
+        bottom: 0;
         z-index: 11;
         visibility: hidden;
     }
