@@ -215,6 +215,17 @@
         </div>
     </div>
 </header>
+<div class="logomob">
+    <a
+        href={getHref("/", $AppStore.lang)}
+        class="logotype"
+        on:click={() => {
+            navigate("/");
+        }}
+    >
+        <img src="{logoSrc}" alt="logotype" />
+    </a>
+</div>
 
 <style>
     .white svg rect {
@@ -427,7 +438,21 @@
         transform: scale(1) !important;
         color: #686060 !important;
     }
+    .logomob {
+        display: none;
+    }
     @media screen and (max-width: 640px) {
+        .logomob {
+            display: block;
+            position: fixed;
+            z-index: 99999;
+            top: 3.5vw;
+            left: 5vw;
+        }
+        .logomob img {
+            width: 20vw;
+            height: 20vw;
+        }
         .wallet {
             margin-right: 0;
             margin-bottom: 16px;
@@ -518,7 +543,7 @@
         }
         .header__nav {
             display: flex;
-            margin-top: 124px;
+            margin-top: 230px;
         }
     }
 </style>
