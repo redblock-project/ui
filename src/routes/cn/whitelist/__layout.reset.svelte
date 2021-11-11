@@ -88,7 +88,7 @@
     left: 0;
     position:absolute;
     z-index: 999999999;
-    background: #D0C8C0;
+    background: #F0ECDC;
     width: 100vw;
     height: 100vh;
 }
