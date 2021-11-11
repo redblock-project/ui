@@ -553,7 +553,7 @@
     .person-image {
         position: absolute;
         right: 0;
-        top: 6.7708333333vw;
+        top: -1.7708333333vw;
         width: 45.9583333333vw;
         z-index: 20;
         visibility: hidden;
