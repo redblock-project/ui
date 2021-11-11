@@ -192,7 +192,7 @@
             position: static;
             display: block;
             margin: 0 auto; */
-            width: 87.5vw;
+            width: 99.5vw;
             position: relative;
             z-index: 21;
             display: block;

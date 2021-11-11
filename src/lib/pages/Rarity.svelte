@@ -84,6 +84,7 @@
         z-index: 99;
         justify-content: space-between;
         margin-top: 32px;
+        overflow: hidden;
     }
     .left, .right {
         max-width: 360px;
@@ -175,6 +176,7 @@
         position: relative;
         z-index: 20;
         color: #181818;
+        overflow: hidden;
     }
     .rarity-content .main-title span {
         margin-bottom: 0;
