@@ -62,7 +62,7 @@
         background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAzMiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTYgMEwwIDE2SDMyTDE2IDBaIiBmaWxsPSIjQTBBMEEwIi8+PC9zdmc+");
     }
     .faq .desc {
-        margin: 32px 24px 0 24px;
+        margin: 32px 24px 48px 24px;
         font-family: "Roboto Slab";
         font-style: normal;
         font-weight: normal;
@@ -81,7 +81,7 @@
             max-width: 80%;
         }
         .faq .desc {
-            margin: 32px 0 0 0;
+            margin: 32px 0 48px 0;
             line-height: 175%;
             font-size: 4vw;
         }

@@ -53,8 +53,8 @@
                 <span>{messages[$AppStore.lang].faq_header}</span>
             </h1>
             <div class="faq-content__columns">
-                {#each Array(12) as _, i}
-                    <FaqItem question={messages[$AppStore.lang][`faq_q${i + 1}`]} answer={messages[$AppStore.lang][`faq_a${i + 1}`]} />
+                {#each Array(13) as _, i}
+                    <FaqItem question={messages[$AppStore.lang][`faq_q${i}`]} answer={messages[$AppStore.lang][`faq_a${i}`]} />
                 {/each}
             </div>
         </div>
