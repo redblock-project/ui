@@ -190,6 +190,14 @@
                             navigate("/#roadmap");
                         }}>{messages[$AppStore.lang].nav_roadmap}</a
                     >
+                {:else if 'about' === link}
+                    <a
+                        href={getHref("/", $AppStore.lang) + "#about"}
+                        class:current={"/#about" === navPath}
+                        on:click={() => {
+                            navigate("/#about");
+                        }}>{messages[$AppStore.lang].nav_about}</a
+                    >
                 {:else}
                     <a
                         href={getHref(link, $AppStore.lang)}

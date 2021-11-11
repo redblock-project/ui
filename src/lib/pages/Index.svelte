@@ -495,7 +495,7 @@
 
 
     .about {
-        z-index: 99;
+        z-index: 22;
         margin: 0 auto !important;
         margin-top: 200px !important;
         position: relative;
