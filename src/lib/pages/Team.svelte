@@ -48,12 +48,46 @@
                     <div class="desc">{messages[$AppStore.lang].team_omen_desc}</div>
                 </div>
             </div>
+            <div class="legends second">
+                <div class="legend">
+                    {#if ready}
+                        <img src="/img/george.png" alt="" in:scale|local={{ duration: 1200 }} />
+                    {/if}
+                    <span>{messages[$AppStore.lang].team_george}</span>
+                    <div class="desc">{messages[$AppStore.lang].team_george_desc}</div>
+                </div>
+                <div class="legend">
+                    {#if ready}
+                        <img src="/img/vera.png" alt="" in:fade|local={{ duration: 1000 }} />
+                    {/if}
+                    <span>{messages[$AppStore.lang].team_vera}</span>
+                    <div class="desc">{messages[$AppStore.lang].team_vera_desc}</div>
+                </div>
+                <div class="legend">
+                    {#if ready}
+                        <img src="/img/alex.png" alt="" in:fade|local={{ duration: 1200 }} />
+                    {/if}
+                    <span>{messages[$AppStore.lang].team_alexander}</span>
+                    <div class="desc">{messages[$AppStore.lang].team_alexander_desc}</div>
+                </div>
+                <div class="legend">
+                    {#if ready}
+                        <img src="/img/anasi.png" alt="" in:fade|local={{ duration: 1200 }} />
+                    {/if}
+                    <span>{messages[$AppStore.lang].team_anasi}</span>
+                    <div class="desc">{messages[$AppStore.lang].team_anasi_desc}</div>
+                </div>
+            </div>
         </div>
     </div>
 </main>
 <h2 class="second-title d-mb">Октябрьская революция</h2>
 
 <style>
+    .second {
+        margin-top: 32px;
+        margin-bottom: 64px;
+    }
     .legends {
         display: flex;
         z-index: 99;
