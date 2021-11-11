@@ -74,7 +74,7 @@
         <h1 class="main-title" class:title_en={"en" === $AppStore.lang || "cn" === $AppStore.lang}>
             <span>{messages[$AppStore.lang].index_h1_1}</span>
             {messages[$AppStore.lang].index_h1_2}
-            <mark>Nov 27th</mark>
+            <mark>Nov 25th</mark>
         </h1>
     </div>
     <div class="content">
