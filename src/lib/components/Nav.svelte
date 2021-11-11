@@ -7,7 +7,7 @@
     export let dark = true;
     const logoSrc = dark ? '/img/logo.png' : '/img/logo_w.png';
 
-    const links = ['about', 'roadmap', 'mint', 'allies', 'whitelist', 'team', 'farm', 'hall', 'rarity', 'faq'];
+    const links = ['about', 'mint', 'whitelist', 'allies', 'farm', 'rarity', 'hall', 'roadmap', 'team', 'faq'];
 
     let navPath = "/", account = '';
     onMount(async () => {
@@ -47,6 +47,14 @@
         return '//' === href ? '/' : href;
     };
     const navigate = (href) => {
+        if (-1 !== href.indexOf('#roadmap')) {
+            href = '/';
+            $AppStore.roadmap = true;
+        }
+        if (-1 !== href.indexOf('#about')) {
+            href = '/';
+            $AppStore.about = true;
+        }
         hideDesktopMenu();
         $AppStore.mobileMenuShowed = false;
         navPath = href;
@@ -105,18 +113,18 @@
                 }}>{messages[$AppStore.lang].nav_mint}</a
             >
             <a
-                href={getHref("allies", $AppStore.lang)}
-                class:current={"/allies" === navPath}
-                on:click={() => {
-                    navigate("/allies");
-                }}>{messages[$AppStore.lang].nav_allies}</a
-            >
-            <a
                 href={getHref("whitelist", $AppStore.lang)}
                 class:current={"/whitelist" === navPath}
                 on:click={() => {
                     navigate("/whitelist");
                 }}>{messages[$AppStore.lang].nav_whitelist}</a
+            >
+            <a
+                href={getHref("/", $AppStore.lang) + "#roadmap"}
+                class:current={"/#roadmap" === navPath}
+                on:click={() => {
+                    navigate("/#roadmap");
+                }}>{messages[$AppStore.lang].nav_roadmap}</a
             >
             <a
                 href={getHref("team", $AppStore.lang)}
@@ -145,24 +153,52 @@
                 <img src="/img/logo_w.png" alt="logotype" />
             </a>
             {#each links as link (link)}
-                <a
-                    href={getHref(link, $AppStore.lang)}
-                    class:current={`/${link}` === navPath}
-                    on:click={() => {
-                        navigate(`/${link}`);
-                    }}>{messages[$AppStore.lang][`nav_${link}`]}</a
-                >
+                {#if 'roadmap' === link}
+                    <a
+                        href={getHref("/", $AppStore.lang) + "#roadmap"}
+                        class:current={"/#roadmap" === navPath}
+                        on:click={() => {
+                            navigate("/#roadmap");
+                        }}>{messages[$AppStore.lang].nav_roadmap}</a
+                    >
+                {:else if 'about' === link}
+                    <a
+                        href={getHref("/", $AppStore.lang) + "#about"}
+                        class:current={"/#about" === navPath}
+                        on:click={() => {
+                            navigate("/#about");
+                        }}>{messages[$AppStore.lang].nav_about}</a
+                    >
+                {:else}
+                    <a
+                        href={getHref(link, $AppStore.lang)}
+                        class:current={`/${link}` === navPath}
+                        on:click={() => {
+                            navigate(`/${link}`);
+                        }}>{messages[$AppStore.lang][`nav_${link}`]}</a
+                    >
+                {/if}
             {/each}
         </div>
         <div class="header__nav">
             {#each links as link (link)}
-                <a
-                    href={getHref(link, $AppStore.lang)}
-                    class:current={`/${link}` === navPath}
-                    on:click={() => {
-                        navigate(`/${link}`);
-                    }}>{messages[$AppStore.lang][`nav_${link}`]}</a
-                >
+                {#if 'roadmap' === link}
+                    <a
+                        href={getHref("/", $AppStore.lang) + "#roadmap"}
+                        class:current={"/#roadmap" === navPath}
+                        on:click={() => {
+                            navigate("/#roadmap");
+                        }}>{messages[$AppStore.lang].nav_roadmap}</a
+                    >
+                {:else}
+                    <a
+                        href={getHref(link, $AppStore.lang)}
+                        class:current={`/${link}` === navPath}
+                        on:click={() => {
+                            navigate(`/${link}`);
+                        }}>{messages[$AppStore.lang][`nav_${link}`]}</a
+                    >
+                {/if}
             {/each}
         </div>
         <div class="right">

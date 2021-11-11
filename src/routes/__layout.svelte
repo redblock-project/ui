@@ -16,9 +16,7 @@
     }
     let navPath = "/", dataPromise;
     onMount(async () => {
-        const images = 640 >= screen.availWidth ? 
-            ['bg.png', 'coin.png', 'image.jpg', 'modal.png', 'paper_s.jpg', 'CHE.png', 'LENIN.png', 'MAO.png'] : 
-            ['bg.png', 'coin.png', 'image.jpg', 'modal.png', 'paper.jpg', 'CHE.png', 'LENIN.png', 'MAO.png'];
+        const images = ['coin.png', 'image.jpg', 'modal.png', 'mb-bg.jpg', 'CHE.png', 'LENIN.png', 'MAO.png'];
         const promises = [];
         for (let img of images) {
             promises.push(preload(`/img/${img}`));
@@ -47,8 +45,8 @@
 {#await dataPromise then data}
     <slot />
 {/await}
-<div class="main-bg"></div>
-<div class="decor-bg"></div>
+<!-- <div class="main-bg"></div> -->
+<!-- <div class="decor-bg"></div> -->
 <div class="transparent-bg"></div>
 <button class="mb-switcher">
     <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="open-button" on:click={() => { $AppStore.mobileMenuShowed = !$AppStore.mobileMenuShowed }} class:open={$AppStore.mobileMenuShowed}>

@@ -46,7 +46,7 @@
     <slot />
 {/if}
 <div class="main-bg"></div>
-<div class="decor-bg"></div>
+<!-- <div class="decor-bg"></div> -->
 <button class="mb-switcher">
     <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="open-button" on:click={() => { $AppStore.mobileMenuShowed = !$AppStore.mobileMenuShowed }} class:open={$AppStore.mobileMenuShowed}>
         <rect width="40" height="8" fill="white" id="top" />

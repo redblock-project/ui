@@ -5,7 +5,6 @@
     import messages from "$lib/_locales/messages.json";
     let ready = false;
     onMount(() => {
-        document.body.style.overflowY = "scroll";
         ready = true;
     });
 </script>

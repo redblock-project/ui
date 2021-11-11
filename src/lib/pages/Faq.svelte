@@ -31,7 +31,6 @@
     }
     let ready = false, mobile = false, unique = 0;
     onMount(() => {
-        document.body.style.overflowY = "scroll";
         setTimeout(() => {
             ready = true;
             unique++;
@@ -148,28 +147,18 @@
         display: none;
     }
     @media screen and (max-width: 640px) {
+        main {
+            margin-top: 100px;
+            position: relative;
+            z-index: 22;
+        }
         .boy-person {
             width: 87.5vw;
-            position: absolute;
+            position: relative;
             left: 0;
+            bottom: 0;
             display: block;
-            animation: moveToEnd 0.5s linear forwards;
-            animation-delay: 0.4s;
-        }
-        @keyframes moveToEnd { 
-            0% { 
-                transform: translateY(0);
-            }
-            90% {
-                transform: translateY(100vh);
-            }
-            100% {
-                transform: none;
-                position: relative;
-                z-index: 11;
-                left: 0;
-                margin-bottom: -100vh;
-            }
+            margin-top: 50px;
         }
         .main-title {
             margin-bottom: 1.5625vw;
@@ -199,7 +188,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
+            position: initial;
             z-index: 20;
             color: #181818;
             top: 33.75vw;

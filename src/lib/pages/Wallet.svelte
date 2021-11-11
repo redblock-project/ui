@@ -3,7 +3,6 @@
     import { AppStore } from "$lib/utils/Store";
     import messages from "$lib/_locales/messages.json";
     onMount(() => {
-        document.body.style.overflowY = "scroll";
     });
 </script>
 

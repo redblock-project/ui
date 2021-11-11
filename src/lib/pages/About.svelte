@@ -28,7 +28,6 @@
     }
     let ready = false, mobile = false, unique = 0;
     onMount(() => {
-        document.body.style.overflowY = "scroll";
         setTimeout(() => {
             ready = true;
             unique++;

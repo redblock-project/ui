@@ -5,7 +5,6 @@
     import messages from "$lib/_locales/messages.json";
     let ready = false;
     onMount(() => {
-        document.body.style.overflowY = "scroll";
         ready = true;
     });
 </script>
@@ -59,6 +58,10 @@
         display: flex;
         z-index: 99;
         justify-content: center;
+        overflow: hidden;
+    }
+    .legend img {
+        max-width: 350px;
     }
     .legend span {
         font-family: "Painting With Chocolate";
@@ -76,7 +79,7 @@
         font-family: "Roboto Slab";
         font-style: normal;
         font-weight: normal;
-        font-size: 0.7291666666666666vw;
+        font-size: 1vw;
         display: flex;
         align-items: center;
         text-align: center;

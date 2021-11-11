@@ -3,7 +3,6 @@
     import { AppStore } from "$lib/utils/Store";
     import messages from "$lib/_locales/messages.json";
     onMount(() => {
-        document.body.style.overflowY = "scroll";
     });
 
     const showModal = () => {
@@ -28,7 +27,7 @@
             </div>
         
             <h3>{messages[$AppStore.lang].redlist_discord}</h3>
-            <a class="default-button" href="https://discord.gg/redblock" target="_blank">
+            <a class="default-button" href="https://forms.gle/sBgQ6LFA4mvfiD7P8" target="_blank">
                 <span>{messages[$AppStore.lang].redlist_discord_btn}</span>
             </a>
         </div>

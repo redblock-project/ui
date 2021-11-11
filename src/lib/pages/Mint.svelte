@@ -4,7 +4,6 @@
     import messages from "$lib/_locales/messages.json";
 
     onMount(() => {
-        document.body.style.overflowY = "scroll";
     });
 
     const showModal = () => {
@@ -325,6 +324,12 @@
         display: none;
     }
     @media screen and (max-width: 640px) {
+        main {
+            margin-top: 100px;
+        }
+        .wrapper {
+            position: initial;
+        }
         .main-title {
             margin-top: 33.75vw;
             margin-bottom: 1.5625vw;
@@ -379,7 +384,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
+            position: initial;
             z-index: 20;
             color: #181818;
             top: 31.25vw;

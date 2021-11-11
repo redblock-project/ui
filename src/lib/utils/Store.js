@@ -23,4 +23,6 @@ export const AppStore = writable({
     artblockInstance: null,
     nftboxesContract: null,
     nftboxesInstance: null,
+    roadmap: false,
+    about: false,
 });

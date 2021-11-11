@@ -28,7 +28,6 @@
     }
     let ready = false, mobile = false, unique = 0;
     onMount(() => {
-        document.body.style.overflowY = "scroll";
         setTimeout(() => {
             ready = true;
             unique++;
@@ -198,22 +197,8 @@
             z-index: 21;
             display: block;
             margin: 0 auto;
-            animation: moveToEnd 0.5s linear forwards;
-            animation-delay: 0.4s;
+            bottom: auto;
 		}
-        @keyframes moveToEnd { 
-            0% { 
-                transform: translateY(0);
-            }
-            90% {
-                transform: translateY(100vh);
-            }
-            100% {
-                transform: none;
-                position: relative;
-                margin-bottom: -100vh;
-            }
-        }
         .default-text {
             padding-left: 0;
             font-size: 2.8125vw;

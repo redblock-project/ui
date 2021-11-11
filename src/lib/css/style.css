@@ -17,12 +17,13 @@
     src: url("/font/tnr.ttf");
 }
 body, html {
+    overflow-x: hidden;
+    overflow-y: auto;
     background: #D0C8C0;
     font-family: "Roboto Slab";
-}
-body {
-    overflow-x: hidden;
-    overflow-y: scroll;
+    width: 100vw;
+    max-width:100%;
+    background: url('/img/paper.png');
 }
 .p_bold {
     font-size: 1.4375vw;

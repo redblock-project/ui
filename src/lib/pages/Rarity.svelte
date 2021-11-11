@@ -5,7 +5,6 @@
     import messages from "$lib/_locales/messages.json";
     let ready = false, mobile = false;
     onMount(() => {
-        document.body.style.overflowY = "scroll";
         ready = true;
         if (1280 >= screen.availWidth) {
             mobile = true;
