@@ -120,50 +120,50 @@
                 <div class="card">
                     <div class="step">1</div>
                     <div class="title">{@html messages[$AppStore.lang].pyatiletka_s1_title}<br/><span>Q4 2021</span></div>
-                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s1_quote}</div>
                     <div class="content2">{@html messages[$AppStore.lang].pyatiletka_s1_desc}</div>
+                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s1_quote}</div>
                 </div>
                 <div class="card">
                     <div class="step">2</div>
                     <div class="title">{@html messages[$AppStore.lang].pyatiletka_s2_title}<br/><span>Q1 2022</span></div>
-                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s2_quote}</div>
                     <div class="content2">{@html messages[$AppStore.lang].pyatiletka_s2_desc}</div>
+                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s2_quote}</div>
                 </div>
                 <div class="card">
                     <div class="step">3</div>
                     <div class="title">{@html messages[$AppStore.lang].pyatiletka_s3_title}<br/><span>Q1 2022</span></div>
-                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s3_quote}</div>
                     <div class="content2">{@html messages[$AppStore.lang].pyatiletka_s3_desc}</div>
+                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s3_quote}</div>
                 </div>
                 <div class="card">
                     <div class="step">4</div>
                     <div class="title">{@html messages[$AppStore.lang].pyatiletka_s4_title}<br/><span>Q2 2022</span></div>
-                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s4_quote}</div>
                     <div class="content2">{@html messages[$AppStore.lang].pyatiletka_s4_desc}</div>
+                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s4_quote}</div>
                 </div>
                 <div class="card">
                     <div class="step">5</div>
                     <div class="title">{@html messages[$AppStore.lang].pyatiletka_s5_title}<br/><span>Q2 2022</span></div>
-                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s5_quote}</div>
                     <div class="content2">{@html messages[$AppStore.lang].pyatiletka_s5_desc}</div>
+                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s5_quote}</div>
                 </div>
                 <div class="card">
                     <div class="step">6</div>
                     <div class="title">{@html messages[$AppStore.lang].pyatiletka_s6_title}<br/><span>Q3 2022</span></div>
-                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s6_quote}</div>
                     <div class="content2">{@html messages[$AppStore.lang].pyatiletka_s6_desc}</div>
+                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s6_quote}</div>
                 </div>
                 <div class="card">
                     <div class="step">7</div>
                     <div class="title">{@html messages[$AppStore.lang].pyatiletka_s7_title}<br/><span>Q1 1917</span></div>
-                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s7_quote}</div>
                     <div class="content2">{@html messages[$AppStore.lang].pyatiletka_s7_desc}</div>
+                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s7_quote}</div>
                 </div>
                 <div class="card">
                     <div class="step">8</div>
                     <div class="title">{@html messages[$AppStore.lang].pyatiletka_s8_title}<br/></div>
-                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s8_quote}</div>
                     <div class="content2">{@html messages[$AppStore.lang].pyatiletka_s8_desc}</div>
+                    <div class="quote">{@html messages[$AppStore.lang].pyatiletka_s8_quote}</div>
                 </div>
             </div>
         </div>
@@ -384,9 +384,15 @@
         top: -10px;
     }
     .timeline .card .quote {
-        font-weight: bold;
+        position: relative;
+        z-index: 3;
+        font-family: 'Roboto Slab';
+        font-style: normal;
+        font-size: 0.7375vw;
+        line-height: 200%;
+        color: #181818;
     }
-    .timeline .card .quote, .timeline .card .content2 {
+    .timeline .card .content2 {
         position: relative;
         z-index: 3;
         font-family: 'Roboto Slab';
@@ -908,14 +914,15 @@
         }
         .roadmap .timeline .card .quote {
             margin-top: 8px;
-            font-size: 4vw;
+            font-size: 3.25vw;
             line-height: 150%;
+            margin-bottom: 24px;
         }
         .roadmap .timeline .card .content2 {
             margin-top: 8px;
             font-size: 4vw;
             line-height: 150%;
-            margin-bottom: 24px;
+            margin-bottom: 12px;
         }
         .roadmap .main-title {
             margin-top: 33.75vw;
