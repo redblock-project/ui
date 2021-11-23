@@ -23,8 +23,13 @@
             <div class="mint-content__columns">
                 <div class="mint-content__column">
                     <span class="mint-content__title">ETHEREUM</span>
-                    <span class="mint-content__sub-title">0.0711 ETH {messages[$AppStore.lang].mint_unit}</span
-                    >
+                    <span class="mint-content__sub-title">
+                        {#if "cn" === $AppStore.lang}
+                            {messages[$AppStore.lang].mint_unit} 0.0711 ETH 
+                        {:else}
+                            0.0711 ETH {messages[$AppStore.lang].mint_unit}
+                        {/if}
+                    </span>
                 </div>
                 <div class="mint-content__column">
                     <span class="mint-content__title">ERC20 {messages[$AppStore.lang].mint_tokens}</span>
