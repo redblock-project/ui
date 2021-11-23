@@ -11,16 +11,16 @@
 </script>
 
 <svelte:head>
-    <title>{messages[$AppStore.lang].kolhoz_title}</title>
+    <title>{messages[$AppStore.lang].redlist_title}</title>
 </svelte:head>
 <main>
     <div class="wrapper">
         <div class="kolhoz-content">
             <h1 class="main-title">
-                <span>WHITE</span>
+                <span>{messages[$AppStore.lang].redlist_header}</span>
             </h1>
             <h1 class="sub-title">
-                <span>list</span>
+                <span>{messages[$AppStore.lang].redlist_header2}</span>
             </h1>
             <div class="text">
                 {@html messages[$AppStore.lang].redlist_content}
