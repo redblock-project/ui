@@ -35,6 +35,9 @@
         } catch (e) {}
     });
 </script>
+
+<!-- svelte-ignore a11y-missing-attribute -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDVMS78" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 {#if $AppStore.showLoader}
     <div class="loader">
         <img src="/img/logo.png" class="black" alt="redblock" />
