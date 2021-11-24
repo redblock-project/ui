@@ -25,9 +25,9 @@
                     <span class="mint-content__title">ETHEREUM</span>
                     <span class="mint-content__sub-title">
                         {#if "cn" === $AppStore.lang}
-                            {messages[$AppStore.lang].mint_unit} 0.0711 ETH 
+                            {messages[$AppStore.lang].mint_unit} 0.05 ETH 
                         {:else}
-                            0.0711 ETH {messages[$AppStore.lang].mint_unit}
+                            0.05 ETH {messages[$AppStore.lang].mint_unit}
                         {/if}
                     </span>
                 </div>
