@@ -132,11 +132,11 @@
                 }}>{messages[$AppStore.lang].nav_mint}</a
             >
             <a
-                href={getHref("whitelist", $AppStore.lang)}
-                class:current={"/whitelist" === navPath}
+                href={getHref("wallet", $AppStore.lang)}
+                class:current={"/wallet" === navPath}
                 on:click={() => {
-                    navigate("/whitelist");
-                }}>{messages[$AppStore.lang].nav_whitelist}</a
+                    navigate("/wallet");
+                }}>{messages[$AppStore.lang].nav_wallet}</a
             >
             <a
                 href={getHref("/", $AppStore.lang) + "#roadmap"}
