@@ -72,7 +72,7 @@
                             {messages[$AppStore.lang].nav_whitelist}
                         </div>
                     {:else}
-                        {#if $MintStore.mintStarted}
+                        {#if $MintStore.mintStarted && 0 < $AppStore.walletAddress.length}
                             <div class="titleWhitelist">
                                 public
                             </div>
