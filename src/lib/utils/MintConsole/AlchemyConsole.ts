@@ -22,7 +22,7 @@ export const alchemyConsole = new class AlchemyConsole
 
     async isSaleInPprogess(): Promise<boolean> {
         const stopped = await this.mintContract.saleStopped();
-        return stopped;
+        return !stopped;
     }
 
     async updateAvailable(): Promise<boolean>
