@@ -4,10 +4,6 @@
     import messages from "$lib/_locales/messages.json";
     onMount(() => {
     });
-
-    const showModal = () => {
-        $AppStore.showModal = true;
-    };
 </script>
 
 <svelte:head>

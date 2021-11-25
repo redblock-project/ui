@@ -1,8 +1,9 @@
 <script>
     import { AppStore } from "$lib/utils/Store";
     import Nav from "$lib/components/Nav.svelte";
-    import Modal from "$lib/components/Modal.svelte";
+    import Modal from "$lib/components/Modal/Modal.svelte";
     import { onMount } from "svelte";
+    import { getWalletState } from '$lib/utils/wallet';
 
     const preload = (src) => {
         return new Promise((resolve) => {
@@ -14,17 +15,14 @@
             image.src = src;
         });
     }
-    let navPath = "/";
+    let navPath = "/", dataPromise;
     onMount(async () => {
-        const images = 640 >= screen.availWidth ? 
-            ['bg.png', 'boy.png', 'coin.png', 'girl.png', 'image.jpg', 'modal.png', 'paper_s.jpg', 'person.png', 'CHE.png', 'LENIN.png', 'MAO.png', 'bear.png'] : 
-            ['bg.png', 'boy.png', 'coin.png', 'girl.png', 'image.jpg', 'modal.png', 'paper.jpg', 'person.png', 'CHE.png', 'LENIN.png', 'MAO.png', 'bear.png'];
+        const images = ['coin.png', 'image.jpg', 'modal.png', 'mb-bg.jpg', 'CHE.png', 'LENIN.png', 'MAO.png'];
         const promises = [];
         for (let img of images) {
             promises.push(preload(`/img/${img}`));
         }
-        await Promise.all(promises);
-        $AppStore.showLoader = false;
+        dataPromise = Promise.all(promises);
         if ("ru" === document.location.pathname.split("/")[1])
             $AppStore.lang = "ru";
         "ru" === $AppStore.lang
@@ -33,6 +31,10 @@
         try {
             await screen.orientation.lock("portrait");
         } catch (e) {}
+
+        await dataPromise;
+        $AppStore.showLoader = false;
+        await getWalletState(window);
     });
 </script>
 
@@ -45,9 +47,10 @@
     </div>
 {/if}
 <Nav dark={false} />
-{#if !$AppStore.showLoader}
+<!-- {#if !$AppStore.showLoader}
     <slot />
-{/if}
+{/if} -->
+<slot />
 <div class="main-bg"></div>
 <!-- <div class="decor-bg"></div> -->
 <button class="mb-switcher">
@@ -89,7 +92,7 @@
 .loader {
     top: 0;
     left: 0;
-    position:absolute;
+    position: fixed;
     z-index: 999999999;
     background: #F0ECDC;
     width: 100vw;

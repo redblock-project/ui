@@ -52,7 +52,7 @@
         "hall_title": "Hall of fame",
         "hall_header": "Hall of fame",
         "hall_text": "Only 7 out of 13 Legendary Comrades will be available for sale immediately. Other 6 will be placed on Dutch auctions after the end of sales, to buy for U$$R tokens, earned by your Comrade in Farm farming. All the tokens raised in the auctions will be burned as a deflationary mechanism incentive.",
-        "coming": "Coming soon",
+        "coming": "The sale has not started yet",
         "connect": "Connect",
         "loading": "...loading",
         "installMetamask": "Please install Metamask",
@@ -145,7 +145,17 @@
         "pyatiletka_s8_desc": "",
         "hall_che": "Ernesto Che Guevara",
         "hall_len": "Vladimir Ilyich Ulyanov-Lenin",
-        "hall_mao": "毛澤東"
+        "hall_mao": "毛澤東",
+
+        
+        "mint_connected": "Mint",
+        "mint_erc20": "Approve & Mint",
+        "amountExceed": "You already minted max amount of comrades",
+        "noartblocks": "Artblocks not found",
+        "noboxes": "NFT Boxes not found",
+        "willmint": "will be minted",
+        "nowhitelist": "Seems like you are not in the whitelist. <br/> The main sale starts 24 hours after the whitelist sale. We are waiting for you there!",
+        "reserve": "RESERVE"
     },
     "cn": {
         "index_title": "Redblock NFT",
@@ -182,7 +192,7 @@
         "hall_title": "名人堂",
         "hall_header": "名人堂",
         "hall_text": "在13位传奇同志中，只有7位可以立即购买。其他 6 位将在发售结束后进行荷兰式拍卖，您可以用在农场（Farm）中获得的USSR币购买。拍卖中筹集的所有代币将作为通货紧缩机制的激励而被烧毁。",
-        "coming": "Coming soon",
+        "coming": "The sale has not started yet",
         "connect": "进入",
         "loading": "...loading",
         "installMetamask": "Please install Metamask",
@@ -293,7 +303,16 @@
         "team_alexander": "Alexander",
         "team_alexander_desc": "哲学博士，自 1985 年以来一直是游戏玩家。",
         "team_anasi": "Anasi",
-        "team_anasi_desc": "演艺界经理，成功的 Axie 管理人，NFT 爱好者。"
+        "team_anasi_desc": "演艺界经理，成功的 Axie 管理人，NFT 爱好者。",
+
+        "mint_connected": "Mint",
+        "mint_erc20": "Approve & Mint",
+        "amountExceed": "You already minted max amount of comrades",
+        "noartblocks": "Artblocks not found",
+        "noboxes": "NFT Boxes not found",
+        "willmint": "will be minted",
+        "nowhitelist": "Seems like you are not in the whitelist. <br/> The main sale starts 24 hours after the whitelist sale. We are waiting for you there!",
+        "reserve": "RESERVE"
     },
     "ru": {
         "index_title": "Redblock NFT",
@@ -331,7 +350,7 @@
         "hall_title": "Доска почета",
         "hall_header": "Доска почета",
         "hall_text": "Только 7 из 13 легендарных товарищей будут доступны для покупки сразу же. Остальные 6 героев станут доступны на голландских аукционах после окончания основных продаж, и купить их можно будет за токены USSR, заработанные вашим Товарищем в Колхозе. Для уменьшения инфляции мы сожжем все токены, собранные на аукционах.",
-        "coming": "Coming soon",
+        "coming": "Продажа еще не началась",
         "connect": "Connect",
         "loading": "...loading",
         "installMetamask": "Please install Metamask",
@@ -442,6 +461,16 @@
         "team_alexander": "Alexander",
         "team_alexander_desc": "кандидат философских наук, геймер с 1985 года.",
         "team_anasi": "Anasi",
-        "team_anasi_desc": "менеджер шоу-бизнеса, успешный Axie-менеджер, NFT-энтузиаст."
+        "team_anasi_desc": "менеджер шоу-бизнеса, успешный Axie-менеджер, NFT-энтузиаст.",
+
+        
+        "mint_connected": "Mint",
+        "mint_erc20": "Approve & Mint",
+        "amountExceed": "Вы уже сминтили максимальное количество товарищей",
+        "noartblocks": "Artblocks не найдены",
+        "noboxes": "NFT Boxes не найдены",
+        "willmint": "will be minted",
+        "nowhitelist": "Похоже, вас нет в whitelist. <br/> Основная продажа начнется через 24 часа после whitelist продажи. Мы ждем вас!",
+        "reserve": "RESERVE"
     }
 }

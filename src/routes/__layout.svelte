@@ -1,8 +1,9 @@
 <script>
     import { AppStore } from "$lib/utils/Store";
     import Nav from "$lib/components/Nav.svelte";
-    import Modal from "$lib/components/Modal.svelte";
+    import Modal from "$lib/components/Modal/Modal.svelte";
     import { onMount } from "svelte";
+    import { getWalletState } from '$lib/utils/wallet';
 
     const preload = (src) => {
         return new Promise((resolve) => {
@@ -33,6 +34,7 @@
 
         await dataPromise;
         $AppStore.showLoader = false;
+        await getWalletState(window);
     });
 </script>
 
@@ -45,9 +47,10 @@
     </div>
 {/if}
 <Nav />
-{#await dataPromise then data}
+<!-- {#await dataPromise then data}
     <slot />
-{/await}
+{/await} -->
+<slot />
 <!-- <div class="main-bg"></div> -->
 <!-- <div class="decor-bg"></div> -->
 <div class="transparent-bg"></div>
@@ -100,7 +103,7 @@
 .loader {
     top: 0;
     left: 0;
-    position:absolute;
+    position:fixed;
     z-index: 999999999;
     background: #F0ECDC;
     width: 100vw;

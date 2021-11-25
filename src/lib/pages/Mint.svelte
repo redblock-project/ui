@@ -1,14 +1,57 @@
 <script lang="ts">
+    // @ts-nocheck
     import { onMount } from "svelte";
-    import { AppStore } from "$lib/utils/Store";
+    import { AppStore, MintStore } from "$lib/utils/Store";
     import messages from "$lib/_locales/messages.json";
+    import { connectWallet, WalletStatus } from "$lib/utils/wallet";
+    import Loader from "$lib/components/Loader.svelte";
+    import MintForm from "./MintForm.svelte";
+    import { mintConsole } from "$lib/utils/MintConsole/MintConsole";
+    import { alchemyConsole } from "$lib/utils/MintConsole/AlchemyConsole";
 
-    onMount(() => {
+    const init = async () => {
+        if (showLoader)
+            return;
+
+        showLoader = true;
+        if (undefined === window.ethereum) {
+            await alchemyConsole.init(window);
+            $MintStore.mintStarted = await alchemyConsole.isSaleInPprogess();
+            await alchemyConsole.updateAvailable();
+        } else {
+            await mintConsole.init(window);
+            await mintConsole.isMintStarted();
+            await mintConsole.updateAvailable();
+            if (0 < $AppStore.walletAddress.length) {
+                await mintConsole.isWhitelistSaleEnabled();
+                await mintConsole.checkMaxAmount();
+            }
+        }
+
+        showLoader = false;
+    };
+
+    let showLoader = false;
+    onMount(async () => {
+        init();
     });
 
+    $: {
+        if (0 < $AppStore.walletAddress.length) {
+            init();
+        }
+    }
+
     const showModal = () => {
+        $AppStore.contract = "mint";
         $AppStore.showModal = true;
     };
+
+    const makeConnect = async () => {
+        showLoader = true;
+        await connectWallet(window);
+        showLoader = false;
+    }
 </script>
 
 <svelte:head>
@@ -19,38 +62,88 @@
         <div class="mint-content">
             <h1 class="main-title">
                 <span>{messages[$AppStore.lang].mint_header}</span>
+                {#if showLoader}
+                    <div class="titleWhitelist">
+                        loading
+                    </div>
+                {:else}
+                    {#if $MintStore.isWhitelistSale}
+                        <div class="titleWhitelist">
+                            {messages[$AppStore.lang].nav_whitelist}
+                        </div>
+                    {:else}
+                        {#if $MintStore.mintStarted}
+                            <div class="titleWhitelist">
+                                public
+                            </div>
+                        {:else}
+                            <div class="titleWhitelist">
+                                {messages[$AppStore.lang].coming}
+                            </div>
+                        {/if}
+                    {/if}
+                {/if}
             </h1>
-            <div class="mint-content__columns">
+            <div class="mint-content__columns" style="margin-bottom: 16px;">
                 <div class="mint-content__column">
                     <span class="mint-content__title">ETHEREUM</span>
-                    <span class="mint-content__sub-title">
-                        {#if "cn" === $AppStore.lang}
-                            {messages[$AppStore.lang].mint_unit} 0.05 ETH 
-                        {:else}
-                            0.05 ETH {messages[$AppStore.lang].mint_unit}
-                        {/if}
-                    </span>
-                </div>
-                <div class="mint-content__column">
-                    <span class="mint-content__title">ERC20 {messages[$AppStore.lang].mint_tokens}</span>
-                    <div class:mint-content__group={'en' === $AppStore.lang || 'cn' === $AppStore.lang} class:mint-content__group_ru={'ru' === $AppStore.lang}>
+                    <div class="mint-content__group">
                         <div class="mint-content__item">
-                            <span class="mint-content__sub-title">NCT</span>
-                            <span class="mint-content__value">100/100</span>
-                        </div>
-                        <div class="mint-content__item">
-                            <span class="mint-content__sub-title">DUST</span>
-                            <span class="mint-content__value">100/100</span>
-                        </div>
-                        <div class="mint-content__item">
-                            <span class="mint-content__sub-title">WHALE</span>
-                            <span class="mint-content__value">100/100</span>
+                            <span class="mint-content__sub-title">0.05 ETH {messages[$AppStore.lang].mint_unit}</span>
+                            <span class="mint-content__value">{$MintStore.ethAvailable}/9917</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="default-button" on:click={showModal}>
-                <span>{messages[$AppStore.lang].mint_connect}</span>
+            <div class="mint-content__columns">
+                <div class="mint-content__column">
+                    <span class="mint-content__title">ERC721 {messages[$AppStore.lang].mint_tokens}</span>
+                    <div class="mint-content__group">
+                        <div class="mint-content__item">
+                            <span class="mint-content__sub-title">Artblock</span>
+                            <span class="mint-content__value">{$MintStore.artblockAvailable}/100</span>
+                        </div>
+                        <div class="mint-content__item">
+                            <span class="mint-content__sub-title">NFT Box</span>
+                            <span class="mint-content__value">{$MintStore.boxAvailable}/100</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mint-content__column">
+                    <span class="mint-content__title">ERC20 {messages[$AppStore.lang].mint_tokens}</span>
+                    <div class="mint-content__group">
+                        <div class="mint-content__item">
+                            <span class="mint-content__sub-title">NCT</span>
+                            <span class="mint-content__value">{$MintStore.nctAvailable}/100</span>
+                        </div>
+                        <div class="mint-content__item">
+                            <span class="mint-content__sub-title">DUST</span>
+                            <span class="mint-content__value">{$MintStore.dustAvailable}/100</span>
+                        </div>
+                        <div class="mint-content__item">
+                            <span class="mint-content__sub-title">WHALE</span>
+                            <span class="mint-content__value">{$MintStore.whaleAvailable}/100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mint_process">
+                {#if showLoader}
+                    <h5>{messages[$AppStore.lang].loading}</h5>
+                    <Loader />
+                {:else}
+                    <div class="mint_form">
+                        {#if WalletStatus.connected === $AppStore.walletStatus}
+                            {#if $MintStore.mintStarted}
+                                <MintForm />
+                            {/if}
+                        {:else}
+                            <div class="default-button" on:click={makeConnect}>
+                                <span>{messages[$AppStore.lang].mint_connect}</span>
+                            </div>
+                        {/if}
+                    </div>
+                {/if}
             </div>
             <p class="default-text d-mb">
                 Октя́брьская револю́ция (полное официальное название в СССР —
@@ -75,6 +168,45 @@
 <img src="/img/mark.png" alt="coin" class="mark-image d-dt" />
 
 <style>
+    main {
+        position: relative;
+        z-index: 49;
+    }
+    .titleWhitelist {
+        font-family: 'Painting With Chocolate';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 2.5vw;
+        align-items: center;
+        text-align: center;
+        color: #D81828;
+        letter-spacing: normal;
+    }
+    h5 {
+        font-family: "Rubik";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 1.875vw;
+        letter-spacing: 0.24em;
+        color: #181818;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .mint_form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        
+        z-index: 100;
+    }
+    .mint_process {
+        margin-bottom: 256px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        flex-direction: column;
+    }
     .wrapper {
         width: 100%;
         max-width: 83.3333333333vw;
@@ -94,6 +226,7 @@
         margin-bottom: 5.7291666667vw;
         margin-top: 4.375vw;
         display: block;
+        text-align: center;
     }
     .main-title span {
         font-family: "Arkhip";
@@ -253,22 +386,13 @@
     }
     .mint-content__group::before {
         position: absolute;
-        content: "Now Available";
+        content: "minted";
         font-size: 0.9375vw;
         line-height: 200%;
-        top: 50%;
+        top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
     }    
-    .mint-content__group_ru::before {
-        position: absolute;
-        content: "Доступные в данный момент";
-        font-size: 0.9375vw;
-        line-height: 200%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
     .mint-content__item {
         display: flex;
         flex-direction: column;
@@ -277,7 +401,7 @@
     }
     .mint-content__item .mint-content__sub-title {
         display: inline-block;
-        padding-bottom: 3.125vw;
+        padding-bottom: 2.125vw;
     }
     .mint-content__value {
         font-family: "Painting With Chocolate";
@@ -309,7 +433,7 @@
 
     .coin-image {
         width: 8.3333333333vw;
-        position: fixed;
+        position: relative;
         left: 50%;
         transform: translateX(-50%);
         bottom: -2.0833333333vw;
@@ -329,6 +453,13 @@
         display: none;
     }
     @media screen and (max-width: 640px) {
+        .titleWhitelist {
+            font-size: 5.625vw;
+        }
+        h5 {
+            font-size: 5.625vw;
+            text-align: center;
+        }
         main {
             margin-top: 100px;
         }

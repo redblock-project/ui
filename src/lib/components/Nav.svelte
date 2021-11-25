@@ -1,4 +1,6 @@
 <script>
+    // @ts-nocheck
+
     import '$lib/css/style.css';
     import { onMount } from "svelte";
     import { AppStore } from "$lib/utils/Store.js";
@@ -7,8 +9,9 @@
     export let dark = true;
     const logoSrc = dark ? '/img/logo.png' : '/img/logo_w.png';
 
-    const links = ['about', 'mint', 'whitelist', 'allies', 'farm', 'rarity', 'hall', 'roadmap', 'team', 'faq'];
+    const links = ['about', 'mint', 'whitelist', 'allies', 'farm', 'rarity', 'hall', 'wallet', 'roadmap', 'team', 'faq'];
 
+    let chainID = '';
     let navPath = "/", account = '';
     onMount(async () => {
         if ("ru" === document.location.pathname.split("/")[1])
@@ -28,9 +31,14 @@
         } catch (e) {}
 
         window.addEventListener("unhandledrejection", function(promiseRejectionEvent) { 
-            $AppStore.showModal = true;
-            $AppStore.walletError = true;
-            $AppStore.err = promiseRejectionEvent.reason.message.split('{')[0];
+            const text = promiseRejectionEvent.reason.message.split('{')[0];
+            if (-1 === text.indexOf("User denied transaction signature")) {
+                $AppStore.showModal = true;
+                $AppStore.someError = true;
+                $AppStore.err = text;
+            } else if (-1 !== text.indexOf("Failed to fetch dynamically imported module")) {
+                document.location.reload();
+            }
         });
     });
 
@@ -65,6 +73,17 @@
             account = '';
         } else {
             account = `${($AppStore.walletAddress.substr(0, 6))}...${($AppStore.walletAddress.substr($AppStore.walletAddress.length - 4))}`;
+        }
+        switch ($AppStore.chain) {
+            case '0x1':
+                chainID = 'mainnet';
+                break;
+            case '0x4':
+                chainID = 'rinkeby';
+                break;
+            default:
+                chainID = $AppStore.chain;
+                break;
         }
     }
 
@@ -212,6 +231,7 @@
         <div class="right">
             <div class="wallet" class:hide={0 === $AppStore.walletAddress.length}>
                 {account}
+                <span class="chainID">{chainID}</span>
             </div>
             <div class="contacts">
                 <a href="https://twitter.com/RedBlockCommune" target="_blank">
@@ -272,6 +292,18 @@
 </div>
 
 <style>
+    .chainID {
+        display: flex;
+        position: absolute;
+        top: -8px;
+        font-size: 12px;
+        color: #ffffff;
+        right: 0;
+        background: #000000;
+        height: 13px;
+        align-items: center;
+        padding: 0 5px;
+    }
     .white svg rect {
         fill: #dcdcdc;
     }
@@ -380,6 +412,8 @@
         text-align: center;
         line-height: 48px;
         color: #181818;
+        
+        position: relative;
     }
     .hide {
         display: none;
@@ -587,7 +621,7 @@
         }
         .header__nav {
             display: flex;
-            margin-top: 230px;
+            margin-top: 280px;
         }
     }
 </style>
