@@ -122,11 +122,16 @@
                         {:else}
                             <div class="gallery">
                                 {#each redblocks as nft, i }
-                                    <div class="box" on:click={ () => { selectNft(nft, i)} }>
-                                        <div class="border">
+                                    <div class="box">
+                                        <div class="border" on:click={ () => { selectNft(nft, i)} }>
                                             <img src="{nft.src}" id="nft_{nft.id}" alt="Reblock comrade {nft.id}" />
                                         </div>
-                                        <span>ID: {nft.id}</span>
+                                        <span>
+                                            ID: {nft.id}
+                                            <a href="https://opensea.io/assets/0xe4ed29f64b45a2c01f63b537a2c05ff57f81099c/{nft.id}" target="_blank" title="See on Opensea">
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                            </a>
+                                        </span>
                                     </div>
                                 {/each}
                             </div>
@@ -305,10 +310,20 @@
         font-weight: normal;
         font-size: 14px;
         line-height: 18px;
-        text-decoration-line: underline;
         display: inline-block;
         color: #181818;
         margin-top: 8px;
+        width: 133px;
+        text-align: center;
+    }
+    .box span a {
+        display: inline;
+    }
+    .box span a svg {
+        max-width: 18px;
+        display: inline;
+        position: relative;
+        top: 3px;
     }
     .gallery, .item {
         display: flex;

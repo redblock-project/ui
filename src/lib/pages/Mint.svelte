@@ -22,8 +22,8 @@
             await mintConsole.init(window);
             await mintConsole.isMintStarted();
             await mintConsole.updateAvailable();
+            await mintConsole.isWhitelistSaleEnabled();
             if (0 < $AppStore.walletAddress.length) {
-                await mintConsole.isWhitelistSaleEnabled();
                 await mintConsole.checkMaxAmount();
             }
         }
