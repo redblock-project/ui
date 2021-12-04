@@ -80,7 +80,8 @@
                             {/if}
                         {:else}
                             <div class="titleWhitelist">
-                                {messages[$AppStore.lang].coming}
+                                <!-- {messages[$AppStore.lang].coming} -->
+                                Mint is over
                             </div>
                         {/if}
                     {/if}
@@ -130,7 +131,7 @@
                 </div>
             </div>
             <div class="mint_process">
-                {#if showLoader}
+                <!-- {#if showLoader}
                     <h5>{messages[$AppStore.lang].loading}</h5>
                     <Loader />
                 {:else}
@@ -145,7 +146,7 @@
                             </div>
                         {/if}
                     </div>
-                {/if}
+                {/if} -->
             </div>
             <p class="default-text d-mb">
                 Октя́брьская револю́ция (полное официальное название в СССР —
